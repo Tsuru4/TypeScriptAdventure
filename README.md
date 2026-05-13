@@ -37,6 +37,7 @@ Libraries:
 - [Typescriptlang.org](https://www.typescriptlang.org/)
 - [Visualstudiocode.com](https://code.visualstudio.com/docs/languages/typescript)
 - [Google.com](https://google.com/search) Particuarly helpful for MacOS specific instalation instructions.
+- [Youtube Net Ninja's TypeScript Tutorials](https://www.youtube.com/watch?v=Y4IiQY9dNRA&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=7)
 
 # To Do List
 
@@ -46,7 +47,8 @@ Libraries:
 - [x] Write out new class documentation with careful attention to abstraction and encapsulation.
 - [ ] Write out classes based on documentation described in TypeScriptAdventure.ts comments.
 - [ ] Test classes with React console.
-- [ ] Establish module and test classes with index.HTML
+- [x] Establish module 
+- [ ] Test classes with index.HTML
 - [ ] Clean up unnessecary functions and files.
 - [ ] Complete story.
 - [ ] Polish CSS.
