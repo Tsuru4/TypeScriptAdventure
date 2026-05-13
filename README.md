@@ -19,7 +19,7 @@ Once I am roughly twelve hours into this project, a 5 minute youtube video will 
 Note: I use MacOS for the majority of my programming. Some of my instructions for setting up the enviornment may be Mac specific. 
 
 Development Tools:
-- Visual Studio Code 1.119.0
+- Visual Studio Code 1.119.1
 - NPM (Node Package Manager) 11.14.1
 
 Languages:
@@ -30,25 +30,38 @@ Languages:
 
 Libraries:
 - ESLint
-- 
+- ESLint (The VSCode extension, which has the same name as the actual ESLint).
 
 # Useful Websites
 
 - [Typescriptlang.org](https://www.typescriptlang.org/)
 - [Visualstudiocode.com](https://code.visualstudio.com/docs/languages/typescript)
+- [Google.com](https://google.com/search) Particuarly helpful for MacOS specific instalation instructions.
 
 # To Do List
 
-[x] Research basic TypeScript principles and experiment with small projects such as Hello World.
-[ ] Investigate asynchronous functions and consider how they could enhance the project.
-[x] Investigate the uses of ESLint.
-[ ] Write out new class documentation with careful attention to abstraction and encapsulation.
-[ ] 
+- [x] Research basic TypeScript principles and experiment with small projects such as Hello World.
+- [x] Investigate asynchronous functions and consider how they could enhance the project.
+- [x] Investigate the uses of ESLint.
+- [x] Write out new class documentation with careful attention to abstraction and encapsulation.
+- [ ] Write out classes based on documentation described in TypeScriptAdventure.ts comments.
+- [ ] Test classes with React console.
+- [ ] Establish module and test classes with index.HTML
+- [ ] Clean up unnessecary functions and files.
+- [ ] Complete story.
+- [ ] Polish CSS.
+- [ ] Add functions to support pictures.
+- [ ] Add functions to animate a character avatar (I might not actually get to this).
+- [ ] Remove unnessecary files relating to React from repository.
 
 
 # Useful Commands
-To install typescript on MacOS: sudo npm install -g typescript
-Many instructions online seem to leave sudo out of that command, but for MacOS, sudo is needed for installing many tools or the OS will reject the installation.
-Check current npm version: npm -v
-Check current typescript version: tsc --version
-Install ESLint in local workspace: npm install --save-dev eslint
+- To install typescript on MacOS: sudo npm install -g typescript
+- Many instructions online seem to leave sudo out of that command, but for MacOS, sudo is needed for installing many tools or the OS will reject the installation.
+- Check current npm version: npm -v
+- Check current typescript version: tsc --version
+- Install ESLint in local workspace: sudo npm install --save-dev eslint
+- Initialize ESLint : sudo npm init @eslint/config@latest
+
+- Compile from Typescript to Javascript: tsc "filename".ts
+- Test Javascript file in VSCode terminal using node: node "filename".js
