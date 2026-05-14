@@ -12,15 +12,22 @@ const adventureBook = new Book(16);
     adventureBook.constructChapter(3, "path3Fight", ["He fights desperately to stand up against his father's supervillain reign of terror. His oldest brother and some of their friends join our protagonist. Using a laser pistol developed by one of his father's minions, he managed to hit his father's leg, but ultimately, both sides have superpower, and the other side has a lot more experience.", "Our protagonist lost the battle, and in a panic, he and his allies are forced to flee."], "To be continued.", []);
 }
 //TODO  construct all chapters.
-const storyBox = document.createElement("div");
-storyBox.id = "storybox";
-document.body.appendChild(storyBox);
-const questionBox = document.createElement("div");
-questionBox.id = "questionbox";
-document.body.appendChild(questionBox);
-const buttonBox = document.createElement("div");
-buttonBox.id = "buttonbox";
-document.body.appendChild(buttonBox);
+function createAndAppendDiv(divId) {
+    const temporaryDiv = document.createElement("div");
+    temporaryDiv.id = divId;
+    document.body.appendChild(temporaryDiv);
+    return temporaryDiv;
+}
+//Div tags are set up here. This encapsulates HTML code specific to this project. All the HTML project needs to do it load this script and the css file
+// I was going to control the styles from here as well, but there are currently too many unknowns in the differences between css and JavaScript when it comes to editing classes before all elements in the class exists. It's better to play it safe.
+createAndAppendDiv("longartbox");
+const storyBox = createAndAppendDiv("storybox");
+const questionBox = createAndAppendDiv("questionbox");
+const buttonBox = createAndAppendDiv("buttonbox");
+const artGrid = document.createElement("artgrid");
+buttonBox.className = "boxofboxes";
+artGrid.className = "boxofboxes";
+//Note, artBox will eventually contain a grid of images equal to the number of buttonBoxes. However, these images will not be implemented until very late in the project.
 function updateHTML(nextPath) {
     const [storyStrings, questionString, buttonArray] = adventureBook.updateChapter(nextPath);
     storyBox.innerHTML = "";
@@ -32,7 +39,6 @@ function updateHTML(nextPath) {
         storyBox.appendChild(p);
     });
     questionBox.textContent = questionString;
-    //!This is block is incomplete. The path has no way of being passed yet.
     buttonArray.forEach(button => {
         const buttonElement = document.createElement("button");
         buttonElement.textContent = button.label;
@@ -41,5 +47,6 @@ function updateHTML(nextPath) {
         });
         buttonBox.appendChild(buttonElement);
     });
+    //TODO, fix the grid.
 }
 updateHTML("path1");

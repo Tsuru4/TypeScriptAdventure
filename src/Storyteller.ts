@@ -55,17 +55,27 @@ adventureBook.constructChapter(
 
 //TODO  construct all chapters.
 
-const storyBox = document.createElement("div");
-storyBox.id = "storybox";
-document.body.appendChild(storyBox);
+function createAndAppendDiv(divId:string): HTMLDivElement
+{
+    const temporaryDiv = document.createElement("div");
+    temporaryDiv.id = divId;
+    document.body.appendChild(temporaryDiv);
+    return temporaryDiv;
+}
 
-const questionBox = document.createElement("div");
-questionBox.id = "questionbox";
-document.body.appendChild(questionBox);
+//Div tags are set up here. This encapsulates HTML code specific to this project. All the HTML project needs to do it load this script and the css file
+// I was going to control the styles from here as well, but there are currently too many unknowns in the differences between css and JavaScript when it comes to editing classes before all elements in the class exists. It's better to play it safe.
+createAndAppendDiv("longartbox");
+const storyBox = createAndAppendDiv("storybox");
+const questionBox = createAndAppendDiv("questionbox");
+const buttonBox = createAndAppendDiv("buttonbox");
+const artGrid = document.createElement("artgrid");
 
-const buttonBox = document.createElement("div");
-buttonBox.id = "buttonbox";
-document.body.appendChild(buttonBox);
+buttonBox.className = "boxofboxes";
+artGrid.className = "boxofboxes";
+//Note, artBox will eventually contain a grid of images equal to the number of buttonBoxes. However, these images will not be implemented until very late in the project.
+
+
 
 function updateHTML(nextPath:string)
 {
@@ -84,7 +94,6 @@ function updateHTML(nextPath:string)
 
     questionBox.textContent = questionString;
 
-    //!This is block is incomplete. The path has no way of being passed yet.
     buttonArray.forEach(button => {
         const buttonElement = document.createElement("button");
         buttonElement.textContent = button.label;
@@ -93,6 +102,8 @@ function updateHTML(nextPath:string)
         });
         buttonBox.appendChild(buttonElement);
     });
+
+    //TODO, fix the grid.
 
 }
 
