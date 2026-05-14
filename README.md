@@ -19,7 +19,7 @@ Once I am roughly twelve hours into this project, a 5 minute youtube video will 
 Note: I use MacOS for the majority of my programming. Some of my instructions for setting up the enviornment may be Mac specific. 
 
 Development Tools:
-- Visual Studio Code 1.119.1
+- Visual Studio Code 1.120.0
 - NPM (Node Package Manager) 11.14.1
 
 Languages:
