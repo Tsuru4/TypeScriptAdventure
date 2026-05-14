@@ -45,10 +45,13 @@ Libraries:
 - [x] Investigate asynchronous functions and consider how they could enhance the project.
 - [x] Investigate the uses of ESLint.
 - [x] Write out new class documentation with careful attention to abstraction and encapsulation.
-- [ ] Write out classes based on documentation described in TypeScriptAdventure.ts comments.
-- [ ] Test classes with React console.
+- [x] Write out classes based on documentation described in TypeScriptAdventure.ts comments.
+- [x] Test classes with React console.
 - [x] Establish module 
-- [ ] Test classes with index.HTML
+- [x] Test classes with index.HTML
+- [ ] Fix the chapter headings.
+- [ ] Implement the character name replacing feature.
+- [ ] Implement the minigames.
 - [ ] Clean up unnessecary functions and files.
 - [ ] Complete story.
 - [ ] Polish CSS.

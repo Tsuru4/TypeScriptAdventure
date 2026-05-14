@@ -12,10 +12,13 @@ const adventureBook = new Book(16);
     adventureBook.constructChapter(3, "path3Fight", ["He fights desperately to stand up against his father's supervillain reign of terror. His oldest brother and some of their friends join our protagonist. Using a laser pistol developed by one of his father's minions, he managed to hit his father's leg, but ultimately, both sides have superpower, and the other side has a lot more experience.", "Our protagonist lost the battle, and in a panic, he and his allies are forced to flee."], "To be continued.", []);
 }
 //TODO  construct all chapters.
+const StorytellerContent = document.createElement("div");
+StorytellerContent.id = "StorytellerContent";
+document.body.appendChild(StorytellerContent);
 function createAndAppendDiv(divId) {
     const temporaryDiv = document.createElement("div");
     temporaryDiv.id = divId;
-    document.body.appendChild(temporaryDiv);
+    StorytellerContent.appendChild(temporaryDiv);
     return temporaryDiv;
 }
 //Div tags are set up here. This encapsulates HTML code specific to this project. All the HTML project needs to do it load this script and the css file
@@ -24,7 +27,7 @@ createAndAppendDiv("longartbox");
 const storyBox = createAndAppendDiv("storybox");
 const questionBox = createAndAppendDiv("questionbox");
 const buttonBox = createAndAppendDiv("buttonbox");
-const artGrid = document.createElement("artgrid");
+const artGrid = createAndAppendDiv("artgrid");
 buttonBox.className = "boxofboxes";
 artGrid.className = "boxofboxes";
 //Note, artBox will eventually contain a grid of images equal to the number of buttonBoxes. However, these images will not be implemented until very late in the project.
@@ -40,13 +43,25 @@ function updateHTML(nextPath) {
     });
     questionBox.textContent = questionString;
     buttonArray.forEach(button => {
+        const currentSubBox = document.createElement("div");
+        currentSubBox.className = "buttonsubbox";
+        buttonBox.appendChild(currentSubBox);
         const buttonElement = document.createElement("button");
         buttonElement.textContent = button.label;
         buttonElement.addEventListener("click", () => {
             updateHTML(button.path);
         });
-        buttonBox.appendChild(buttonElement);
+        currentSubBox.appendChild(buttonElement);
     });
-    //TODO, fix the grid.
+    const gridBoxes = document.getElementsByClassName("bosofboxes");
+    for (let i = 0; i < gridBoxes.length; i++) {
+        const currentbox = gridBoxes[i];
+        //Error: "Property 'style' does not exist on type 'Element'" will trigger without this check.
+        // I googled this error. This is because there are some types of element which do not have a style.
+        if (currentbox instanceof HTMLElement) {
+            //Funnily enough, this is the first time so far I've needed to cast a number as a string in typescript.
+            currentbox.style.gridTemplateColumns = "repeat(" + buttonArray.length.toString + ", 1fr)";
+        }
+    }
 }
 updateHTML("path1");

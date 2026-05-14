@@ -15,18 +15,17 @@
 
 .boxofboxes {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     height: 40px;
 }
 
-#buttonbox {
+.buttonsubbox{
     display:flex;
     justify-content: center;
     align-items: center;
-    
     background-color: lightblue;
 }
 
-#artbox {
+#artgrid {
     background-color: green;
 }

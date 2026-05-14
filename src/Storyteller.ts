@@ -55,11 +55,15 @@ adventureBook.constructChapter(
 
 //TODO  construct all chapters.
 
+const StorytellerContent = document.createElement("div");
+StorytellerContent.id = "StorytellerContent";
+document.body.appendChild(StorytellerContent);
+
 function createAndAppendDiv(divId:string): HTMLDivElement
 {
     const temporaryDiv = document.createElement("div");
     temporaryDiv.id = divId;
-    document.body.appendChild(temporaryDiv);
+    StorytellerContent.appendChild(temporaryDiv);
     return temporaryDiv;
 }
 
@@ -69,7 +73,7 @@ createAndAppendDiv("longartbox");
 const storyBox = createAndAppendDiv("storybox");
 const questionBox = createAndAppendDiv("questionbox");
 const buttonBox = createAndAppendDiv("buttonbox");
-const artGrid = document.createElement("artgrid");
+const artGrid = createAndAppendDiv("artgrid");
 
 buttonBox.className = "boxofboxes";
 artGrid.className = "boxofboxes";
@@ -95,15 +99,34 @@ function updateHTML(nextPath:string)
     questionBox.textContent = questionString;
 
     buttonArray.forEach(button => {
+        const currentSubBox = document.createElement("div");
+        currentSubBox.className = "buttonsubbox";
+        buttonBox.appendChild(currentSubBox);
+
         const buttonElement = document.createElement("button");
         buttonElement.textContent = button.label;
         buttonElement.addEventListener("click", () => 
             {updateHTML(button.path);
         });
-        buttonBox.appendChild(buttonElement);
+        currentSubBox.appendChild(buttonElement);
     });
 
-    //TODO, fix the grid.
+    const gridBoxes = document.getElementsByClassName("bosofboxes");
+    for (let i = 0; i < gridBoxes.length; i++)
+    {
+        const currentbox = gridBoxes[i];
+
+        //Error: "Property 'style' does not exist on type 'Element'" will trigger without this check.
+        // I googled this error. This is because there are some types of element which do not have a style.
+        if (currentbox instanceof HTMLElement)
+        {
+            //Funnily enough, this is the first time so far I've needed to cast a number as a string in typescript.
+            currentbox.style.gridTemplateColumns = "repeat(" + buttonArray.length.toString + ", 1fr)";
+        }
+    }
+    
+
+    
 
 }
 
