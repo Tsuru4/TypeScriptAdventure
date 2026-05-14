@@ -29,9 +29,9 @@ adventureBook.constructChapter(
     
 adventureBook.constructChapter(
     2, "path2Air", 
-    ["[Protagonist] chose air."],
-    "To be continued.",
-    []
+    ["He felt drawn to the book on air related superpowers, almost as if he was destined to read it.", "After practicing for a few years, he developed his own specialty. Now he can generate his own lightning!","One day, our protagonist realized that his dad is evil."],
+    "What should he do?",
+    [{label:"Fight", path:"path3Fight"}]
     );
     
 adventureBook.constructChapter(
@@ -40,6 +40,17 @@ adventureBook.constructChapter(
     "To be continued.",
     []
     );
+
+adventureBook.constructChapter(
+    3, "path3Fight",
+    ["He fights desperately to stand up against his father's supervillain reign of terror. His oldest brother and some of their friends join our protagonist. Using a laser pistol developed by one of his father's minions, he managed to hit his father's leg, but ultimately, both sides have superpower, and the other side has a lot more experience.", "Our protagonist lost the battle, and in a panic, he and his allies are forced to flee."],
+    "To be continued.",
+    []
+    );
+
+
+
+
 }
 
 //TODO  construct all chapters.

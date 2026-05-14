@@ -7,8 +7,9 @@ const adventureBook = new Book(16);
         "One day, [Protagonist]'s father pulls him and his two older brothers aside and brings him to the family's secret library. He shows them four books, each with hidden techniques on superpowers."], "Which book will [Protagonist] choose?", [{ label: "Fire", path: "path2Fire" }, { label: "Water", path: "path2Water" }, { label: "Air", path: "path2Air" }, { label: "Earth", path: "path2Earth" }]);
     adventureBook.constructChapter(2, "path2Fire", ["[Protagonist] skeptically chose fire. The book claims that fire is the most powerful element, coveted even by the gods. But his progress is slow. Both of his older brothers leave him in the dust."], "To be continued.", []);
     adventureBook.constructChapter(2, "path2Water", ["[Protagonist] chose water."], "To be continued.", []);
-    adventureBook.constructChapter(2, "path2Air", ["[Protagonist] chose air."], "To be continued.", []);
+    adventureBook.constructChapter(2, "path2Air", ["He felt drawn to the book on air related superpowers, almost as if he was destined to read it.", "After practicing for a few years, he developed his own specialty. Now he can generate his own lightning!", "One day, our protagonist realized that his dad is evil."], "What should he do?", [{ label: "Fight", path: "path3Fight" }]);
     adventureBook.constructChapter(2, "path2Earth", ["[Protagonist] chose earth."], "To be continued.", []);
+    adventureBook.constructChapter(3, "path3Fight", ["He fights desperately to stand up against his father's supervillain reign of terror. His oldest brother and some of their friends join our protagonist. Using a laser pistol developed by one of his father's minions, he managed to hit his father's leg, but ultimately, both sides have superpower, and the other side has a lot more experience.", "Our protagonist lost the battle, and in a panic, he and his allies are forced to flee."], "To be continued.", []);
 }
 //TODO  construct all chapters.
 const storyBox = document.createElement("div");
