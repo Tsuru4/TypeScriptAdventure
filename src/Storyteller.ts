@@ -56,10 +56,10 @@ const buttonBox = document.createElement("div");
 buttonBox.id = "buttonbox";
 document.body.appendChild(buttonBox);
 
-function updateHTML()
+function updateHTML(nextPath:string)
 {
 
-    const [storyStrings, questionString, buttonArray] = adventureBook.updateChapter("path1");
+    const [storyStrings, questionString, buttonArray] = adventureBook.updateChapter(nextPath);
     
     storyBox.innerHTML = "";
     questionBox.innerHTML = "";
@@ -77,8 +77,8 @@ function updateHTML()
     buttonArray.forEach(button => {
         const buttonElement = document.createElement("button");
         buttonElement.textContent = button.label;
-        buttonElement.addEventListener("click", () => {
-            updateHTML();
+        buttonElement.addEventListener("click", () => 
+            {updateHTML(button.path);
         });
         buttonBox.appendChild(buttonElement);
     });
@@ -87,4 +87,4 @@ function updateHTML()
 
 
 
-updateHTML();
+updateHTML("path1");

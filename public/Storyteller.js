@@ -20,8 +20,8 @@ document.body.appendChild(questionBox);
 const buttonBox = document.createElement("div");
 buttonBox.id = "buttonbox";
 document.body.appendChild(buttonBox);
-function updateHTML() {
-    const [storyStrings, questionString, buttonArray] = adventureBook.updateChapter("path1");
+function updateHTML(nextPath) {
+    const [storyStrings, questionString, buttonArray] = adventureBook.updateChapter(nextPath);
     storyBox.innerHTML = "";
     questionBox.innerHTML = "";
     buttonBox.innerHTML = "";
@@ -36,9 +36,9 @@ function updateHTML() {
         const buttonElement = document.createElement("button");
         buttonElement.textContent = button.label;
         buttonElement.addEventListener("click", () => {
-            updateHTML();
+            updateHTML(button.path);
         });
         buttonBox.appendChild(buttonElement);
     });
 }
-updateHTML();
+updateHTML("path1");
