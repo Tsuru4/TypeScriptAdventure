@@ -1,9 +1,9 @@
 import { Chapter } from "./Chapter.js";
 export class Book {
+    volumes = [new Map()];
+    storyDictionary = new Map();
+    pathLog = [];
     constructor(totalChapters) {
-        this.volumes = [new Map()];
-        this.storyDictionary = new Map();
-        this.pathLog = [];
         if (totalChapters <= 0) {
             throw new Error("Total chapters must be a positive number");
         }
