@@ -16,10 +16,29 @@ export class Chapter {
         this.buttonBox = this.shuffleList(buttonBox);
     }
     //TODO Complete the below methods.
+    filterAllStrings() {
+    }
     /**
      * Replaces any string wrapped in [] with a new string based on storyDictionary
      */
-    filterString() {
+    filterString(paragraph) {
+        let leftCount = 0;
+        let rightCount = 0;
+        const paragraphLength = paragraph.length;
+        for (let i = 0; i < paragraphLength; i++) {
+            const currentLetter = paragraph.charAt(i);
+            if (currentLetter == "[") {
+                leftCount++;
+            }
+            else {
+                if (currentLetter == "]") {
+                    rightCount++;
+                    if (rightCount > leftCount) {
+                        throw new Error(`There is an ] without a preceding [. Double check chapter construction.`);
+                    }
+                }
+            }
+        }
     }
     //ESLint was absurdly picky about this. I had to ask AI to explain the problem multiple times.
     //It seems that somehow there is some chance that it thought my random integer would end up outside of the bounds of the index.
@@ -63,11 +82,11 @@ export class Chapter {
         return oldList;
     }
     getAllContents() {
-        this.filterString();
+        this.filterAllStrings();
         return [this.storyBox, this.questionBox, this.buttonBox];
     }
     getStoryStrings() {
-        this.filterString();
+        this.filterAllStrings();
         return (this.storyBox);
     }
     getButtonAmount() {

@@ -51,6 +51,8 @@ export class Book {
         if (!chapter) {
             throw new Error(`No chapter found for path ${userChosenPath} in volume index ${currentVolumeIndex}`);
         }
-        return chapter.getAllContents();
+        const [story, question, buttons] = chapter.getAllContents();
+        const heading = "Chapter " + (currentVolumeIndex + 1).toString();
+        return [heading, story, question, buttons];
     }
 }

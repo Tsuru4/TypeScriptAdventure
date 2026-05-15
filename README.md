@@ -49,7 +49,7 @@ Libraries:
 - [x] Test classes with React console.
 - [x] Establish module 
 - [x] Test classes with index.HTML
-- [ ] Fix the chapter headings.
+- [x] Fix the chapter headings.
 - [ ] Implement the character name replacing feature.
 - [ ] Implement the minigames.
 - [ ] Clean up unnessecary functions and files.

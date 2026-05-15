@@ -5,10 +5,6 @@ export class Chapter
 
     private storyBox: string[];
     private questionBox: string;
-    
-    //? Not sure if buttonBox should be a string[]. Maybe an interface is better?
-    //* Answer, buttonBox should NOT be a string[]. They should be an array of interfaces called buttons.
-    //TODO finish defining Button in Buttons.ts.
     private buttonBox: button[];
 
     //Reminder, storymap is a reference to a map that the Book is sharing with its chapters.
@@ -34,12 +30,40 @@ export class Chapter
 
     //TODO Complete the below methods.
 
+    private filterAllStrings()
+    {
+
+    }
+
     /**
      * Replaces any string wrapped in [] with a new string based on storyDictionary
      */
-    private filterString()
+    private filterString(paragraph:string)
     {
-        
+        let leftCount = 0;
+        let rightCount = 0;
+
+        const paragraphLength = paragraph.length;
+        for (let i = 0; i < paragraphLength; i++)
+        {
+            const currentLetter = paragraph.charAt(i);
+            if (currentLetter == "[") 
+            {
+                leftCount++;
+            }
+            else 
+            {
+                if (currentLetter == "]")
+                {
+                    rightCount++;
+                    if (rightCount>leftCount)
+                    {
+                        throw new Error(`There is an ] without a preceding [. Double check chapter construction.`);
+                    }
+                }
+            }
+        }
+
     }
 
     //ESLint was absurdly picky about this. I had to ask AI to explain the problem multiple times.
@@ -94,13 +118,13 @@ export class Chapter
 
     public getAllContents(): [string[], string, button[]]
     {
-        this.filterString();
+        this.filterAllStrings();
         return [this.storyBox, this.questionBox, this.buttonBox];
     }
 
     public getStoryStrings()
     {
-        this.filterString();
+        this.filterAllStrings();
         return (this.storyBox);
     }
 

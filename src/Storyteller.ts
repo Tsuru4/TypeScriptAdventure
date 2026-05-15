@@ -7,22 +7,22 @@ const adventureBook = new Book(16);
 {
 adventureBook.constructChapter(
     1, "path1", 
-    ["This is the story of [Protagonist], a brave young boy with superpowers.",
-        "One day, [Protagonist]'s father pulls him and his two older brothers aside and brings him to the family's secret library. He shows them four books, each with hidden techniques on superpowers."],
-    "Which book will [Protagonist] choose?",
+    ["This is the story of |Protagonist|, a brave young boy with superpowers.",
+        "One day, |Protagonist|'s father pulls him and his two older brothers aside and brings him to the family's secret library. He shows them four books, each with hidden techniques on superpowers."],
+    "Which book will |Protagonist| choose?",
     [{label:"Fire", path:"path2Fire"}, {label:"Water", path:"path2Water"}, {label:"Air", path:"path2Air"}, {label:"Earth", path:"path2Earth"}]
     );
 
 adventureBook.constructChapter(
     2, "path2Fire", 
-    ["[Protagonist] skeptically chose fire. The book claims that fire is the most powerful element, coveted even by the gods. But his progress is slow. Both of his older brothers leave him in the dust."],
+    ["|Protagonist| skeptically chose fire. The book claims that fire is the most powerful element, coveted even by the gods. But his progress is slow. Both of his older brothers leave him in the dust."],
     "To be continued.",
     []
     );
 
 adventureBook.constructChapter(
     2, "path2Water", 
-    ["[Protagonist] chose water."],
+    ["|Protagonist| chose water."],
     "To be continued.",
     []
     );
@@ -36,7 +36,7 @@ adventureBook.constructChapter(
     
 adventureBook.constructChapter(
     2, "path2Earth", 
-    ["[Protagonist] chose earth."],
+    ["|Protagonist| chose earth."],
     "To be continued.",
     []
     );
@@ -84,11 +84,15 @@ artGrid.className = "boxofboxes";
 function updateHTML(nextPath:string)
 {
 
-    const [storyStrings, questionString, buttonArray] = adventureBook.updateChapter(nextPath);
+    const [headingString, storyStrings, questionString, buttonArray] = adventureBook.updateChapter(nextPath);
     
     storyBox.innerHTML = "";
     questionBox.innerHTML = "";
     buttonBox.innerHTML = "";
+
+    const chapterHeading = document.createElement("h1");
+    chapterHeading.textContent = headingString;
+    storyBox.appendChild(chapterHeading);
 
     storyStrings.forEach(paragraph => {
         const p = document.createElement("p");
@@ -121,7 +125,7 @@ function updateHTML(nextPath:string)
         if (currentbox instanceof HTMLElement)
         {
             //Funnily enough, this is the first time so far I've needed to cast a number as a string in typescript.
-            currentbox.style.gridTemplateColumns = "repeat(" + buttonArray.length.toString + ", 1fr)";
+            currentbox.style.gridTemplateColumns = "repeat(" + buttonArray.length.toString() + ", 1fr)";
         }
     }
     

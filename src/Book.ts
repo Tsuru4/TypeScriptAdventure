@@ -61,7 +61,7 @@ export class Book
      * @param userChosenPath The key to the chapter the user selected.
      * @returns All of the strings necessary to update the HTML page with the next part of the story. 
      */
-    public updateChapter(userChosenPath:string): [string[], string, button[]]
+    public updateChapter(userChosenPath:string): [string, string[], string, button[]]
     {
         this.pathLog.push(userChosenPath);
         const currentVolumeIndex = this.pathLog.length - 1;
@@ -73,7 +73,9 @@ export class Book
         if (!chapter) {
             throw new Error(`No chapter found for path ${userChosenPath} in volume index ${currentVolumeIndex}`);
         }
-        return chapter.getAllContents();
+        const [story,question,buttons] = chapter.getAllContents();
+        const heading = "Chapter " + (currentVolumeIndex+1).toString();
+        return [heading, story, question, buttons];
     }
 
 
