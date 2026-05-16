@@ -15,8 +15,6 @@
 
 .boxofboxes {
     display: grid;
-    /*!Something is currently wrong with the css in Storyteller. The line below is a bandaid until I have time to find out why.*/
-    grid-template-columns: repeat(4, 1fr);
     height: 40px;
 }
 

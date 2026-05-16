@@ -41,18 +41,39 @@ export class Book {
      * @returns All of the strings necessary to update the HTML page with the next part of the story.
      */
     updateChapter(userChosenPath) {
-        this.pathLog.push(userChosenPath);
-        const currentVolumeIndex = this.pathLog.length - 1;
-        const currentVolume = this.volumes[currentVolumeIndex];
-        if (!currentVolume) {
-            throw new Error(`No volume found for index ${currentVolumeIndex}`);
+        //check here to make sure all new keywords have been resolved before trying to proceed.
+        const upcomingVolumeIndex = this.pathLog.length;
+        const resolvedVolumeIndex = upcomingVolumeIndex - 1;
+        const upcomingVolume = this.volumes[upcomingVolumeIndex];
+        if (resolvedVolumeIndex >= 0) {
+            const resolvedVolume = this.volumes[resolvedVolumeIndex];
+            if (resolvedVolume === undefined) {
+                throw new Error(`Previous volume entry at index ${resolvedVolumeIndex}, is not defined.`);
+            }
+            const resolvedPath = this.pathLog[resolvedVolumeIndex];
+            if (resolvedPath === undefined) {
+                throw new Error(`Previous pathlog entry at index ${resolvedVolumeIndex}, is not defined.`);
+            }
+            const resolvedChapter = resolvedVolume.get(resolvedPath);
+            if (resolvedChapter === undefined) {
+                throw new Error(`Previous chapter at path ${resolvedPath} of volume ${resolvedVolumeIndex} is missing.`);
+            }
+            /*if (resolvedChapter.getFoundNewKey())
+            {
+                //This error is easy to reach.
+                throw new Error("User input error. Requested the next chapter, but the next chaper had not been finished yet. Name all of the characters first.");
+            }*/
         }
-        const chapter = currentVolume.get(userChosenPath);
+        if (!upcomingVolume) {
+            throw new Error(`No volume found for index ${upcomingVolumeIndex}`);
+        }
+        const chapter = upcomingVolume.get(userChosenPath);
         if (!chapter) {
-            throw new Error(`No chapter found for path ${userChosenPath} in volume index ${currentVolumeIndex}`);
+            throw new Error(`No chapter found for path ${userChosenPath} in volume index ${upcomingVolumeIndex}`);
         }
         const [story, question, buttons] = chapter.getAllContents();
-        const heading = "Chapter " + (currentVolumeIndex + 1).toString();
+        const heading = "Chapter " + (upcomingVolumeIndex + 1).toString();
+        this.pathLog.push(userChosenPath);
         return [heading, story, question, buttons];
     }
 }

@@ -116,7 +116,7 @@ function updateHTML(nextPath:string)
         currentSubBox.appendChild(buttonElement);
     });
 
-    const gridBoxes = document.getElementsByClassName("bosofboxes");
+    const gridBoxes = document.getElementsByClassName("boxofboxes");
     for (let i = 0; i < gridBoxes.length; i++)
     {
         const currentbox = gridBoxes[i];

@@ -2,6 +2,7 @@ export class Chapter {
     storyBox;
     questionBox;
     buttonBox;
+    foundNewKey = false;
     //Reminder, storyDictionary is a reference to a map which the Book is sharing with its Chapters. Again, this is passed by reference, not by value.
     storyDictionary;
     /**
@@ -45,6 +46,7 @@ export class Chapter {
                 this.questionBox.replaceAll(currentKey, currentValue);
             }
         }
+        this.foundNewKey = false;
     }
     /**
      * First part of a multistep process. This function identifies keys which have not already been added to the shared storyDictionary.
@@ -103,6 +105,7 @@ export class Chapter {
             const currentKey = paragraph.substring(startingIndex, endingIndex + 1);
             if (!this.storyDictionary.has(currentKey)) {
                 this.storyDictionary.set(currentKey, "");
+                this.foundNewKey = true;
             }
         }
     }
@@ -152,6 +155,7 @@ export class Chapter {
      * @returns A tuple with the storyStrings[], question, and buttons[]. Take care, as I believe question is passed by value, while the other two are passed by reference.
      */
     getAllContents() {
+        this.updateStringKeywords();
         this.identifyAllKeys();
         return [this.storyBox, this.questionBox, this.buttonBox];
     }
@@ -164,5 +168,8 @@ export class Chapter {
     }
     getButtonAmount() {
         return this.buttonBox.length;
+    }
+    getFoundNewKey() {
+        return this.foundNewKey;
     }
 }

@@ -57,7 +57,7 @@ function updateHTML(nextPath) {
         });
         currentSubBox.appendChild(buttonElement);
     });
-    const gridBoxes = document.getElementsByClassName("bosofboxes");
+    const gridBoxes = document.getElementsByClassName("boxofboxes");
     for (let i = 0; i < gridBoxes.length; i++) {
         const currentbox = gridBoxes[i];
         //Error: "Property 'style' does not exist on type 'Element'" will trigger without this check.

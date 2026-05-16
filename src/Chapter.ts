@@ -6,6 +6,7 @@ export class Chapter
     private storyBox: string[];
     private questionBox: string;
     private buttonBox: button[];
+    private foundNewKey = false;
 
     //Reminder, storyDictionary is a reference to a map which the Book is sharing with its Chapters. Again, this is passed by reference, not by value.
     private storyDictionary:Map<string,string>;
@@ -60,7 +61,7 @@ export class Chapter
                 this.questionBox.replaceAll(currentKey,currentValue);
             }
         }
-            
+        this.foundNewKey = false;   
     }
 
     /**
@@ -75,10 +76,10 @@ export class Chapter
             const currentString = this.storyBox[i];
             if (currentString !== undefined)
             {
-            this.identifyNewKeys(currentString);
+                this.identifyNewKeys(currentString)
             }
         }
-        this.identifyNewKeys(this.questionBox);
+        this.identifyNewKeys(this.questionBox)
     }
 
     /**
@@ -139,10 +140,10 @@ export class Chapter
             if (!this.storyDictionary.has(currentKey))
             {
                 this.storyDictionary.set(currentKey,"");
+                this.foundNewKey = true;
             }
                 
         }
-
     }
 
     //ESLint was absurdly picky about this. I had to ask AI to explain the problem multiple times.
@@ -201,6 +202,7 @@ export class Chapter
      */
     public getAllContents(): [string[], string, button[]]
     {
+        this.updateStringKeywords();
         this.identifyAllKeys();
         return [this.storyBox, this.questionBox, this.buttonBox];
     }
@@ -217,6 +219,11 @@ export class Chapter
     public getButtonAmount()
     {
         return this.buttonBox.length;
+    }
+
+    public getFoundNewKey():boolean
+    {
+        return this.foundNewKey;
     }
 
 }
