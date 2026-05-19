@@ -10,9 +10,9 @@ Additionally, this is my first time using TypeScript, and I am eager to make a d
 
 
 
-Once I am roughly twelve hours into this project, a 5 minute youtube video will be included in this readme with a demonstration and my thoughts on Typescript syntax.
+This video was made when I was approximately 20 hours into the project. Features you see in the video may change as I continue to expand on this project.
 
-[Video]()
+[Video](https://youtu.be/fAXVlX7CK5M)
 
 # Development Environment
 

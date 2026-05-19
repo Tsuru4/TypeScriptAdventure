@@ -1,4 +1,4 @@
-import {Chapter} from "./Chapter.js"
+import {Chapter} from "./Chapter.js";
 import type {button} from "./Button.js";
 
 export class Book 
