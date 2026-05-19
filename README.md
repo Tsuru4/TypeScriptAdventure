@@ -50,7 +50,7 @@ Libraries:
 - [x] Establish module 
 - [x] Test classes with index.HTML
 - [x] Fix the chapter headings.
-- [ ] Implement the character name replacing feature.
+- [x] Implement the character name replacing feature.
 - [ ] Implement the minigames.
 - [ ] Clean up unnessecary functions and files.
 - [ ] Complete story.

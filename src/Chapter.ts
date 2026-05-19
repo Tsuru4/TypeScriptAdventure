@@ -54,12 +54,9 @@ export class Chapter
                     {
                         throw new Error(`Undefined paragraph in story array.`)
                     }
-                    currentParagraph.replaceAll(currentKey,currentValue);
-                    console.log(currentParagraph);
-                    console.log(currentKey + " " + currentValue);
-//!Replace all is not working in the way I intended.
+                    this.storyBox[i] = currentParagraph.replaceAll(currentKey,currentValue);
                 }
-                this.questionBox.replaceAll(currentKey,currentValue);
+                this.questionBox = this.questionBox.replaceAll(currentKey,currentValue);
             }
         }
     }

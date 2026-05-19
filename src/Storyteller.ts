@@ -117,7 +117,7 @@ function updateInputField()
     //Step three, set up a button later input.
     const submitButton = document.createElement("button");
     submitButton.id = ("submitbutton");
-    submitButton.value = adventureBook.getNextUnassignedDictionaryKey();
+    submitButton.textContent = adventureBook.getNextUnassignedDictionaryKey();
     
     submitButton.addEventListener("click", () => 
         {updateDictionary(dictionaryInput.value);
