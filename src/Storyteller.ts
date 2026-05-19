@@ -80,7 +80,8 @@ console.log(adventureBook);
             "He has gotten strong just in time too; all is not well in the world around him.",
             "Now, riots are breaking out throughout the local kingdom, and his father tries to make an ambitious bid to take over it.",
             "This time, our hero is ready. Together with his brother, they prepare an ambush and intercept their father's invasion. After a difficult battle the boys take down their father and his minions.",
-            "However, this doesn't solve everything. The riots are still ongoing. A few weeks after defeating his father, our protagonist sees a girl his age being attacked by rioters."],
+            "However, this doesn't solve everything. The riots are still ongoing. The local king, King [King], ends up abdicating his throne to prevent a civil war. The kingdom divides into a loose confederation of city states, and [Enormous City] holds an election for a new mayor to adjust to the times.",
+            "The riots slowly die down, but not everyone is appeased. A few weeks after defeating his father, our protagonist sees a girl his age being attacked by rioters."],
         "Will he help her?",
         [{label:"Obviously",path:"path7Rescue"}]
     );
@@ -112,14 +113,32 @@ console.log(adventureBook);
 
     adventureBook.constructChapter(
         9, "path9Hero",
-        ["As a superhero, he is more famous than ever. He is especially popular with the ladies. A girl wants to date him."],
+        ["As an official superhero, he quickly makes a name for himself as [Alter Ego]. [Alter Ego] has lots of fans, and is especially popular with the ladies, many of whom for the [Alter Ego] fan club. His biggest fans are [Girl 2], [Girl 3], and [Girl 4]",
+            "[Girl 1] approaches [Protagonist] one day, and asks him on a date."],
         "What should he do?",
-        [{label:"Accept",path:"path10Date"}]
+        [{label:"Date",path:"path10Date"},{label:"Decline",path:"path10Reject"}]
     );
 
     adventureBook.constructChapter(
         10, "path10Date",
-        ["To be continued"],
+        ["[Protagonist] takes [Girl 1] to [Resturaunt], a new resturaunt that [Friend 2] just started. [Friend 2] gives him a friend's discount.",
+            "While on the date, [Girl 1] opens up about her backstory. She's actually a duchess. Or at least, she's a former duchess. Her uncle is [King], the former king. [Girl 1] is incredibly greatful that you saved her life that day.",
+            "[Girl 1] knows about his secret identity, but now she wants to know about his past. He is hesitant to tell her about his supervillain father, but he tells her everything. She is alarmed at first, but she still sees him for who he is, not as his father's son.",
+            "After the date, [Alter Ego] is approached by [Big Gang], the biggest mafia in [Enormous City]. They want him to look the other way when he sees them commiting crimes. In exchange, they promise to tip him off on any other criminals they see and to fund his superhero activities. [Alter Ego] can refuse, of course, but they warn that he may not like what they do next."],
+        "For some reason, it feels like there isn't really a choice. Should he accept the funding?",
+        [{label:"Cooperate",path:"path11Bribe"}]
+    );
+
+    adventureBook.constructChapter(
+        10, "path10Reject",
+        ["He declines. She is a bit disappointed, but she says she understands. She walks off sadly."],
+        "To be continued.",
+        []
+    );
+
+    adventureBook.constructChapter(
+        11, "path11Bribe",
+        ["To be continued."],
         "",
         []
     );
