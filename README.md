@@ -54,6 +54,7 @@ Libraries:
 - [ ] Implement the minigames.
 - [ ] Clean up unnessecary functions and files.
 - [ ] Complete story.
+- [ ] Address edge cases.
 - [ ] Polish CSS.
 - [ ] Add functions to support pictures.
 - [ ] Add functions to animate a character avatar (I might not actually get to this).
