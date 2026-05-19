@@ -3,6 +3,7 @@ export class Book {
     volumes = [new Map()];
     storyDictionary = new Map();
     pathLog = [];
+    foundNewKey = false;
     constructor(totalChapters) {
         if (totalChapters <= 0) {
             throw new Error("Total chapters must be a positive number");
@@ -17,6 +18,34 @@ export class Book {
             throw new Error(`Volume index ${volumeIndex} is out of bounds`);
         }
         volume.set(path, chapter);
+    }
+    //TODO create a new public method which returns the name of the next key with a missing value. Return "" if there are no missing keys.
+    //This function should be complete. It just needs implementation and testing.
+    getNextUnassignedDictionaryKey() {
+        if (this.foundNewKey == true) {
+            for (const [key, value] of this.storyDictionary) {
+                if (value == "") {
+                    return key;
+                }
+            }
+        }
+        return "";
+    }
+    //TODO create a new public method which receives a value for the next missing key. Throw an error if there are no missing keys.
+    //This method should be complete. It just needs implimentation and testing.
+    setNextUnassignedDictionaryKey(newValue) {
+        console.log("Setting new key value " + newValue);
+        if (this.foundNewKey == false) {
+            throw new Error("This function was called, when it was not needed. There are no more new keys in need of a new value.");
+        }
+        for (const [key, value] of this.storyDictionary) {
+            if (value == "") {
+                this.storyDictionary.set(key, newValue);
+                this.refreshFoundNewKeys();
+                return;
+            }
+        }
+        throw new Error("This line of code should never be reachable.");
     }
     /**
      *
@@ -34,7 +63,6 @@ export class Book {
     // The results are impressive though. It seems to have guessed what I wanted by reading my notes from TypeScriptAdventure.ts. Accurately too.
     // I don't see any errors in this function for now. I'll watch it and adjust as needed.
     // But since the point of this project is to learn Typescript, I'll avoid using this feature for my other functions in this project. I may take advantage of this feature in future work though.
-    // I wish it would let me write my comments myself though. (Take a hint, AI, I'm talking to you.)
     /**
      *
      * @param userChosenPath The key to the chapter the user selected.
@@ -43,26 +71,12 @@ export class Book {
     updateChapter(userChosenPath) {
         //check here to make sure all new keywords have been resolved before trying to proceed.
         const upcomingVolumeIndex = this.pathLog.length;
-        const resolvedVolumeIndex = upcomingVolumeIndex - 1;
         const upcomingVolume = this.volumes[upcomingVolumeIndex];
-        if (resolvedVolumeIndex >= 0) {
-            const resolvedVolume = this.volumes[resolvedVolumeIndex];
-            if (resolvedVolume === undefined) {
-                throw new Error(`Previous volume entry at index ${resolvedVolumeIndex}, is not defined.`);
-            }
-            const resolvedPath = this.pathLog[resolvedVolumeIndex];
-            if (resolvedPath === undefined) {
-                throw new Error(`Previous pathlog entry at index ${resolvedVolumeIndex}, is not defined.`);
-            }
-            const resolvedChapter = resolvedVolume.get(resolvedPath);
-            if (resolvedChapter === undefined) {
-                throw new Error(`Previous chapter at path ${resolvedPath} of volume ${resolvedVolumeIndex} is missing.`);
-            }
-            /*if (resolvedChapter.getFoundNewKey())
-            {
-                //This error is easy to reach.
-                throw new Error("User input error. Requested the next chapter, but the next chaper had not been finished yet. Name all of the characters first.");
-            }*/
+        this.refreshFoundNewKeys();
+        console.log("Test 2" + this.foundNewKey);
+        if (this.foundNewKey) {
+            //This error is easy to reach.
+            throw new Error("User input error. Requested the next chapter, but the next chaper had not been finished yet. Name all of the characters first.");
         }
         if (!upcomingVolume) {
             throw new Error(`No volume found for index ${upcomingVolumeIndex}`);
@@ -74,6 +88,19 @@ export class Book {
         const [story, question, buttons] = chapter.getAllContents();
         const heading = "Chapter " + (upcomingVolumeIndex + 1).toString();
         this.pathLog.push(userChosenPath);
+        this.refreshFoundNewKeys();
         return [heading, story, question, buttons];
+    }
+    getFoundNewKeys() {
+        return this.foundNewKey;
+    }
+    refreshFoundNewKeys() {
+        for (const value of this.storyDictionary.values()) {
+            if (value == "") {
+                this.foundNewKey = true;
+                return;
+            }
+        }
+        this.foundNewKey = false;
     }
 }

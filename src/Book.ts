@@ -1,4 +1,4 @@
-import { Chapter } from "./Chapter.js"
+import {Chapter} from "./Chapter.js"
 import type {button} from "./Button.js";
 
 export class Book 
@@ -7,6 +7,7 @@ export class Book
     private volumes: Map<string,Chapter>[] = [new Map<string,Chapter>()];
     private storyDictionary: Map<string,string> = new Map<string,string>();
     private pathLog: string[] = [];
+    private foundNewKey: boolean = false;
 
     constructor(totalChapters:number)
     {
@@ -30,6 +31,44 @@ export class Book
         volume.set(path,chapter);
     }
 
+//TODO create a new public method which returns the name of the next key with a missing value. Return "" if there are no missing keys.
+//This function should be complete. It just needs implementation and testing.
+    public getNextUnassignedDictionaryKey():string
+    {
+        if (this.foundNewKey == true)
+        {
+            for (const [key,value] of this.storyDictionary)
+            {
+                if (value == "")
+                {
+                    return key;
+                }
+            }
+        }
+        return "";
+    }
+
+//TODO create a new public method which receives a value for the next missing key. Throw an error if there are no missing keys.
+//This method should be complete. It just needs implimentation and testing.
+    public setNextUnassignedDictionaryKey(newValue:string)
+    {
+        console.log("Setting new key value " + newValue);
+        if (this.foundNewKey == false)
+        {
+            throw new Error("This function was called, when it was not needed. There are no more new keys in need of a new value.");
+        }
+        for (const [key,value] of this.storyDictionary)
+        {
+            if (value == "")
+            {
+                this.storyDictionary.set(key,newValue);
+                this.refreshFoundNewKeys();
+                return;
+            }
+        }
+        throw new Error("This line of code should never be reachable.");
+    }
+
     /**
      * 
      * @param volumeIndex Where the book belongs chronologically.
@@ -51,7 +90,6 @@ export class Book
     // The results are impressive though. It seems to have guessed what I wanted by reading my notes from TypeScriptAdventure.ts. Accurately too.
     // I don't see any errors in this function for now. I'll watch it and adjust as needed.
     // But since the point of this project is to learn Typescript, I'll avoid using this feature for my other functions in this project. I may take advantage of this feature in future work though.
-    // I wish it would let me write my comments myself though. (Take a hint, AI, I'm talking to you.)
 
     /**
      * 
@@ -65,32 +103,14 @@ export class Book
         
 
         const upcomingVolumeIndex = this.pathLog.length;
-        const resolvedVolumeIndex = upcomingVolumeIndex - 1;
         const upcomingVolume = this.volumes[upcomingVolumeIndex];
-
-        if (resolvedVolumeIndex >= 0)
-        {
-        const resolvedVolume = this.volumes[resolvedVolumeIndex];
-        if (resolvedVolume === undefined)
-        {
-            throw new Error(`Previous volume entry at index ${resolvedVolumeIndex}, is not defined.`);
-        }
-        const resolvedPath = this.pathLog[resolvedVolumeIndex];
-        if (resolvedPath === undefined)
-        {
-            throw new Error(`Previous pathlog entry at index ${resolvedVolumeIndex}, is not defined.`);
-        }
-        const resolvedChapter = resolvedVolume.get(resolvedPath)
-        if (resolvedChapter === undefined)
-        {
-            throw new Error(`Previous chapter at path ${resolvedPath} of volume ${resolvedVolumeIndex} is missing.`);
-        }
-
-        /*if (resolvedChapter.getFoundNewKey())
+        
+        this.refreshFoundNewKeys();
+        console.log("Test 2" + this.foundNewKey);
+        if (this.foundNewKey)
         {
             //This error is easy to reach.
             throw new Error("User input error. Requested the next chapter, but the next chaper had not been finished yet. Name all of the characters first.");
-        }*/
         }
 
         if (!upcomingVolume) {
@@ -104,9 +124,26 @@ export class Book
         const [story,question,buttons] = chapter.getAllContents();
         const heading = "Chapter " + (upcomingVolumeIndex+1).toString();
         this.pathLog.push(userChosenPath);
+        this.refreshFoundNewKeys();
         return [heading, story, question, buttons];
     }
 
+    public getFoundNewKeys():boolean
+    {
+        return this.foundNewKey;
+    }
 
+    private refreshFoundNewKeys()
+    {
+        for (const value of this.storyDictionary.values())
+        {
+            if (value == "")
+            {
+                this.foundNewKey = true;
+                return;
+            }
+        }
+        this.foundNewKey = false;
+    }
 
 }

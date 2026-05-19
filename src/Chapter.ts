@@ -6,7 +6,6 @@ export class Chapter
     private storyBox: string[];
     private questionBox: string;
     private buttonBox: button[];
-    private foundNewKey = false;
 
     //Reminder, storyDictionary is a reference to a map which the Book is sharing with its Chapters. Again, this is passed by reference, not by value.
     private storyDictionary:Map<string,string>;
@@ -29,9 +28,8 @@ export class Chapter
         this.buttonBox = this.shuffleList(buttonBox);
     }
 
-//TODO this function is complete but untested.
     /**
-     *Replaces all keywords in the strings with new values. 
+     *Replaces all keywords in the strings with new values. Return 'false' if suceeded.
      */
     public updateStringKeywords()
     {
@@ -57,11 +55,13 @@ export class Chapter
                         throw new Error(`Undefined paragraph in story array.`)
                     }
                     currentParagraph.replaceAll(currentKey,currentValue);
+                    console.log(currentParagraph);
+                    console.log(currentKey + " " + currentValue);
+//!Replace all is not working in the way I intended.
                 }
                 this.questionBox.replaceAll(currentKey,currentValue);
             }
         }
-        this.foundNewKey = false;   
     }
 
     /**
@@ -140,7 +140,6 @@ export class Chapter
             if (!this.storyDictionary.has(currentKey))
             {
                 this.storyDictionary.set(currentKey,"");
-                this.foundNewKey = true;
             }
                 
         }
@@ -219,11 +218,6 @@ export class Chapter
     public getButtonAmount()
     {
         return this.buttonBox.length;
-    }
-
-    public getFoundNewKey():boolean
-    {
-        return this.foundNewKey;
     }
 
 }
