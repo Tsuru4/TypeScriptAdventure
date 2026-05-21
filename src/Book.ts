@@ -98,10 +98,6 @@ export class Book
      */
     public updateChapter(userChosenPath:string): [string, string[], string, button[]]
     {
-
-        //check here to make sure all new keywords have been resolved before trying to proceed.
-        
-
         const upcomingVolumeIndex = this.pathLog.length;
         const upcomingVolume = this.volumes[upcomingVolumeIndex];
         
@@ -109,7 +105,9 @@ export class Book
         console.log("Test 2" + this.foundNewKey);
         if (this.foundNewKey)
         {
-            //This error is easy to reach.
+            //This check here is to make sure all new keywords have been resolved before trying to proceed.
+            //This is a semantic error which is easy to reach. The user just needs to click buttons out of order.
+            //While it would not cause any runtime errors, for the best user experience, I do not want them moving on until they have named their characters.
             throw new Error("User input error. Requested the next chapter, but the next chaper had not been finished yet. Name all of the characters first.");
         }
 
