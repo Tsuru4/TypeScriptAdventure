@@ -37,7 +37,7 @@ function constructBookSparky() {
     //Volume 5
     {
         adventureBook.constructChapter(5, "path5Job", ["[Protagonist] tries looking for a job, but no one in [Enormous City] will hire him.",
-            "Somehow, he gets for a couple weeks by eating scraps out of a dumptser. He isn't alone, though, as the alleys are crawling with homeless children by day and gangters by night.",
+            "Somehow, he gets by for a couple weeks by eating scraps out of a dumptser. He isn't alone, though, as the alleys are crawling with homeless children by day and gangters by night.",
             "One day, a boy [Friend 2] discovers [Protagonist] and takes him to a food kitchen run by his mother.",
             "[Friend 2]'s mother gives him a part time job at the food kitchen."], "[Protagonist] has a lot of free time on his hands now. How will he spend it?", [{ label: "Work Out", path: "path6Train" }]);
     }
