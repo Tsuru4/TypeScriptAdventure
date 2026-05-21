@@ -51,6 +51,7 @@ Libraries:
 - [x] Test classes with index.HTML
 - [x] Fix the chapter headings.
 - [x] Implement the character name replacing feature.
+- [ ] Tweak features to allow default names.
 - [ ] Implement the minigames.
 - [ ] Clean up unnessecary functions and files.
 - [ ] Complete story.
