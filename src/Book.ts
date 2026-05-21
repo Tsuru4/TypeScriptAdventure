@@ -1,6 +1,11 @@
 import {Chapter} from "./Chapter.js";
 import type {button} from "./Button.js";
 
+/**
+ * Represents a Choose Your Own Adventure book.
+ * Book consists of an array of volumes. Each volume is sequential, creating chronological structure for the story. The volume is a map of Chapters for the reader to choose from. The reader is allowed to select one Chapter per volume. 
+ * 
+ */
 export class Book 
 {
 
@@ -9,13 +14,13 @@ export class Book
     private pathLog: string[] = [];
     private foundNewKey: boolean = false;
 
-    constructor(totalChapters:number)
+    constructor(totalVolumes:number)
     {
-        if (totalChapters <= 0) {
+        if (totalVolumes <= 0) {
             throw new Error("Total chapters must be a positive number");
         }
 
-        for (let i = 1; i < totalChapters; i++)
+        for (let i = 1; i < totalVolumes; i++)
         {
             this.volumes.push(new Map<string,Chapter>());
         }
@@ -71,17 +76,31 @@ export class Book
 
     /**
      * 
-     * @param volumeIndex Where the book belongs chronologically.
-     * @param path The key needed to access the chapter branch. To improve redability and help catch bugs, the recommended value should begin with path, followed by the volume number, then a short yet unique word to distinguish it from the other branches in this volume.
-     * @param storyBox The bulk of the story goes here. Each string is a paragraph. 
+     * @param volumeIndex Where the book belongs chronologically. The earliest index begins at 1. The final index is the equal to the total number of chapters.
+     * @param path The key needed to access the chapter branch. To improve readability and help catch bugs, the recommended value should begin with path, followed by the volume number, then a short yet unique word to distinguish it from the other branches in this volume.
+     * @param storyBox The core text of the story is represented by this array. Each string represents a paragraph within the chapter.
      * @param questionBox A prompt for the user to choose the next branch.
-     * @param buttonBox A list of buttons, as defined in Button.ts, that the user can choose to select the next branch. Each button consists of a label (a string which summarizes the user's option without spoilers) and a path (the key needed to access the chapter branch that this button represents). For every path, follow up by creating a chapter with a matching path as its key, or there will be errors.
+     * @param buttonBox A list of buttons, as defined in Button.ts, that the user can choose to select the next branch. Each button consists of a label (a string which summarizes the user's option without spoilers) and a path (the key needed to access the chapter branch that this button represents). For every unique path in a button, follow up by creating a chapter in the next volume with a matching string as its path, or there will be errors. Use an empty [] to signify an end to the story.
+     * 
+     * Special cases:
+     * The starting chapter should normally be the only chapter in volume 1. It is recommended to set the first chapter's path as "path1", standardizing it so anyone can assume that calling updateChapter("path1") is the proper way to start the book.
+     * 
+     * To end a branch of the story, simply leave an empty array in the place of buttonBox. All chapters in the final volume should be set this way as well.
      */
     public constructChapter(
         volumeIndex:number,
         path:string,
         storyBox:string[], questionBox:string, buttonBox:button[])
     {
+        if (volumeIndex == this.volumes.length && buttonBox.length > 0)
+        {
+            console.error(`Warning. Buttons detected on the final chapter of book. These buttons will be deleted to prevent future errors, but the rest of this chapter will be accepted. Reminder, there should only be ${this.volumes.length} volumes in this book.`);
+            buttonBox = [];
+        }
+        if (volumeIndex > this.volumes.length || volumeIndex < 1)
+        {
+            throw new Error(`Volume index out of range. Volume ${volumeIndex} is not between 1 and ${this.volumes.length}. Chapter rejected.`)
+        }
         const chapter = new Chapter(this.storyDictionary, storyBox, questionBox, buttonBox);
         this.setChapterInVolume(volumeIndex, path, chapter);
     }
@@ -126,9 +145,13 @@ export class Book
         return [heading, story, question, buttons];
     }
 
-    public getFoundNewKeys():boolean
+    /**
+     * 
+     * @returns Identifies which function the client needs to call next. If value false, client needs to call setNextUnassignedDictionaryKey() until value becomes true. When value is true, it is safe to call updateChapter().
+     */
+    public isReadyToUpdateChapter():boolean
     {
-        return this.foundNewKey;
+        return !this.foundNewKey;
     }
 
     private refreshFoundNewKeys()

@@ -36,7 +36,7 @@ artGrid.className = "boxofboxes";
 function updateHTMLDictionary(nextDictionaryValue) {
     inputBox.innerHTML = "";
     adventureBook.setNextUnassignedDictionaryKey(nextDictionaryValue);
-    if (adventureBook.getFoundNewKeys()) {
+    if (!adventureBook.isReadyToUpdateChapter()) {
         updateInputField();
     }
 }
@@ -90,8 +90,8 @@ function updateHTMLChapter(nextPath) {
             storyBox.appendChild(p);
         });
         //Sets up prompts for user to set up new names for dictionary terms.
-        console.log(adventureBook.getFoundNewKeys());
-        if (adventureBook.getFoundNewKeys()) {
+        console.log(!adventureBook.isReadyToUpdateChapter());
+        if (!adventureBook.isReadyToUpdateChapter()) {
             updateInputField();
         }
         questionBox.textContent += questionString;
