@@ -27,12 +27,12 @@ function createAndAppendDiv(divId:string): HTMLDivElement
 
 createAndAppendDiv("longartbox");
 const storyBox = createAndAppendDiv("storybox");
-const questionBox = createAndAppendDiv("questionbox");
 const inputBox = createAndAppendDiv("inputbox");
-const buttonBox = createAndAppendDiv("buttonbox");
+const questionBox = createAndAppendDiv("questionbox");
+const buttonGrid = createAndAppendDiv("buttonbox");
 const artGrid = createAndAppendDiv("artgrid");
 
-buttonBox.className = "boxofboxes";
+buttonGrid.className = "boxofboxes";
 artGrid.className = "boxofboxes";
 //Note, artBox will eventually contain a grid of images equal to the number of buttonBoxes. However, these images will not be implemented until very late in the project.
 
@@ -104,7 +104,7 @@ function updateHTMLChapter(nextPath:string)
     
         storyBox.innerHTML = "";
         questionBox.innerHTML = "";
-        buttonBox.innerHTML = "";
+        buttonGrid.innerHTML = "";
 
         const chapterHeading = document.createElement("h1");
         chapterHeading.textContent = headingString;
@@ -128,7 +128,7 @@ function updateHTMLChapter(nextPath:string)
         buttonArray.forEach(button => {
             const currentSubBox = document.createElement("div");
             currentSubBox.className = "buttonsubbox";
-            buttonBox.appendChild(currentSubBox);
+            buttonGrid.appendChild(currentSubBox);
 
             const buttonElement = document.createElement("button");
             buttonElement.textContent = button.label;

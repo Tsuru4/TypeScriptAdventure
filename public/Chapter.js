@@ -21,7 +21,7 @@ export class Chapter {
         this.buttonBox = this.shuffleList(buttonBox);
     }
     /**
-     *Replaces all keywords in the strings with new values. Return 'false' if suceeded.
+     *Replaces all keywords in the strings with new values.
      */
     updateStringKeywords() {
         const allKeys = this.storyDictionary.keys();

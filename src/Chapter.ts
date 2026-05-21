@@ -29,7 +29,7 @@ export class Chapter
     }
 
     /**
-     *Replaces all keywords in the strings with new values. Return 'false' if suceeded.
+     *Replaces all keywords in the strings with new values.
      */
     public updateStringKeywords()
     {
@@ -207,12 +207,12 @@ export class Chapter
      *
      * @returns The reference to the array of story strings.
      */
-    public getStoryStrings()
+    public getStoryStrings():string[]
     {
         return (this.storyBox);
     }
 
-    public getButtonAmount()
+    public getButtonAmount():number
     {
         return this.buttonBox.length;
     }
