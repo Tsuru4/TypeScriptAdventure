@@ -24,7 +24,7 @@ export class Book {
         }
         volume.set(path, chapter);
     }
-    //TODO create a new public method which returns the name of the next key with a missing value. Return "" if there are no missing keys.
+    //returns the name of the next key with a missing value. Return "" if there are no missing keys.
     //This function should be complete. It just needs implementation and testing.
     getNextUnassignedDictionaryKey() {
         if (this.foundNewKey == true) {
@@ -36,7 +36,7 @@ export class Book {
         }
         return "";
     }
-    //TODO create a new public method which receives a value for the next missing key. Throw an error if there are no missing keys.
+    //receives a value for the next missing key. Throw an error if there are no missing keys.
     //This method should be complete. It just needs implimentation and testing.
     setNextUnassignedDictionaryKey(newValue) {
         console.log("Setting new key value " + newValue);
@@ -124,5 +124,18 @@ export class Book {
             }
         }
         this.foundNewKey = false;
+    }
+    //TODO Work in progress.
+    //! Do not implement outside of testing purposes. Eventually this method will be made private, and a separate public method will call this to return all chosen stories.
+    getChapterStory(volumeIndex, chapterPath) {
+        const volume = this.volumes[volumeIndex];
+        if (!volume) {
+            throw new Error("Volume not found.");
+        }
+        const chapter = volume.get(chapterPath);
+        if (!chapter) {
+            throw new Error("Chapter not found.");
+        }
+        return chapter.getStoryStrings();
     }
 }
