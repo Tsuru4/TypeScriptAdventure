@@ -52,7 +52,7 @@ flowchart
     path15Self --> path16Cooperate[Brother's way]
 
     path16Hero --> path17Portal[Portal:Unfinished]
-    path16Hero --> path18Leader[Leader]
+    path16Hero --> path17Leader[Leader]
 
     path17Leader --> path18Victory[Good Ending 1]
     path17Leader --> path18Mercy[Good Ending 2:Unfinished]
