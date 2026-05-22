@@ -212,7 +212,7 @@ function constructBookSparky():Book
         adventureBook.constructChapter(
             14, "path14Loyalty",
             ["[Alter Ego] says he is happiest with [Sidekick]. This leads to an even bigger fight.",
-                "One day, a world domination organization calling itself the [Surname] Syndicate sends a letter to [Protagonist]. [Protagonist] is alarmed. [Surname] Syndicate was the reason he had fought against his father a few years ago. It should have been disbanded after his father's defeat. They letter invites him to a secret meeting to \"discuss the future of the world\".",
+                "One day, a world domination organization calling itself the [Surname] Syndicate sends a letter to [Protagonist]. [Protagonist] is alarmed. [Surname] Syndicate was the reason he had fought against his father a few years ago. It should have been disbanded after his father's defeat. The letter invites him to a secret meeting to \"discuss the future of the world\".",
                 "A second letter arrives as well, this one addressed to [Alter Ego]."],
             "Should he attend?",
             [{label:"Attend As Self",path:"path15Self"}]//Other choices are to attend as a hero, or refuse.
@@ -236,20 +236,30 @@ function constructBookSparky():Book
             ["[Protagonist] decides to go back home and train harder. Together with [Girl 1], they brainstorm a better way to save Earth.",
                 "[Girl 1] tells her Uncle [King], and he spreads the warning to his connections.",
                 "[Eldest Brother] is irrate, but [Friend 1] and [Animal Girl] respect [Protagonist]'s decision and convince [Eldest Brother] to let [Protagonist] go.",
-                "After years of training, the day comes, just as [Eldest Brother] warned. A huge portal opens in the artic, and an army of aliens pours out! The leader, [Invasion Leader], is exceptionally powerful."],
+                "After years of training, the day comes, just as [Eldest Brother] warned. A huge portal opens in the arctic, and an army of aliens pours out! The leader, [Invasion Leader], is exceptionally powerful."],
             "What will he do?",
-            [{label:"Close Portal",path:""},{label:"Fight Leader",path:"path17Leader"}]
+            [{label:"Close Portal",path:"path17Portal"},{label:"Fight Leader",path:"path17Leader"}]
         );
     }
     //Volume 17
     {
         adventureBook.constructChapter(
             17, "path17Leader",
-            ["[Invasion Leader] laughs at humanity's feeble efforts to stop him. With a wave of his hand, a ball of fire appears, and the artic starts to melt under everyone's feet. The steam is so thick, the entire sky gets covered in clouds, blocking what little starlight remained.",
+            ["[Invasion Leader] laughs at humanity's feeble efforts to stop him. With a wave of his hand, a ball of fire appears, and the arctic starts to melt under everyone's feet. The steam is so thick, the entire sky gets covered in clouds, blocking what little starlight remained.",
                 "But [Protagonist] does not give up. He tackles the invader head on with bolt after bolt of lightning!",
                 "The battle rages for an unkkown amount of time. Eventually, the invader is exausted, and he retreats back through his portal."],
             "...",
             [{label:"Proceed",path:"path18Victory"},{label:"Retreat",path:"path18Mercy"}]
+        );
+
+        adventureBook.constructChapter(
+            17, "path17Portal",
+            ["[Invasion Leader] looks around the artic perimeter. He sees humans everywhere, heroes and villains alike, all gathered together for a commmon cause; to defeat him. He smirks. \"Is this all you earthlings have? No matter where I go, all humans are the same. You cannot stop me!\" With a wave of his hand, he generates an enormous fireball, and prepares to toss it into the ice beneath the heroes' feet.",
+                "Suddenly, a bolt of lightning bursts past his head. [Invasion Leader] glances at [Alter Ego] quizically. \"You missed, Earthling.\"",
+                "But [Alter Ego] was never aiming at [Invasion Leader]; his lighting bolt hits the edge of the portal. Suddenly, there is a violent shaking, and the portal collapses! [Invasion Leader] pales. \"No, anything but that! Run!\" The fireball flickes and vanishes. All of the aliens tremble, drop their weapons, and run.",
+                "But before the people of Earth can cheer, they notice something is off. The aliens are running towards them, trying desperately to get past the perimeter. After a moment, it becomes clear why; the air where the portal was is now pulsing ominously. Breaking the portal by force has created an unstable spacetime rift. Everyone, human and alien alike, begins to flee."],
+            "What will [Alter Ego] do? (To be continued)",
+            [{label:"Reopen Portal",path:"path18Reopen"},{label:"Run",path:"path18Run"},{label:"Close Portal Again",path:"path18Close"}]
         );
     }
     //Volume 18
@@ -262,6 +272,19 @@ function constructBookSparky():Book
                 "\"I thought you died! You were missing for weeks, and then you just suddenly reappeared out of thin air in your bed!\"",
                 "[Protagonist] cannot remember what happened during the last couple weeks. Strangely, his powers are weakened too. He continues his life as a superhero, but he is never again as strong as that day he fought [Invasion Leader].",
                 "This is fine though. Earth is saved. [Protagonist] and [Girl 1] get married and live happily ever after."
+            ],
+            "The end! Congratulations!",
+            []
+        );
+
+        adventureBook.constructChapter(
+            18, "path18Mercy",
+            ["[Alter Ego] lets [Invasion Leader] escape. He can feel himself reaching his limit. Quickly, he joins up with the other defenders of humanity and together they drive the remaining alien forces back through the portal.",
+                "Today was successful. The aliens have learned that as long as [Alter Ego] is there, the Earth is not so easily invaded. [Alter Ego] heaves a sigh of relief and collapses into the artic sea. The last thing he remembers is [Sidekick] rushing over to pull him out.",
+                "[Protagonist] wakes up at home in [Enormous City]. [Girl 1] is with him.",
+                "\"Don't push yourself so hard! You were asleep for two days!\"",
+                "[Protagonist] smiles and hugs her. He's just glad she's safe. Earth is saved, and [Protagonist] did it without relying on [Eldest Brother]'s radical world unification plan.",
+                "[Protagonist] and [Girl 1] get married and live happily ever after."
             ],
             "The end! Congratulations!",
             []

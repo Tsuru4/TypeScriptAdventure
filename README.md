@@ -19,7 +19,7 @@ This video was made when I was approximately 20 hours into the project. Features
 Note: I use MacOS for the majority of my programming. Some of my instructions for setting up the enviornment may be Mac specific. 
 
 Development Tools:
-- Visual Studio Code 1.120.0
+- Visual Studio Code 1.121.0
 - NPM (Node Package Manager) 11.14.1
 
 Languages:
