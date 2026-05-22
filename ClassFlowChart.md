@@ -54,6 +54,12 @@ erDiagram
         number getButtonAmount()
     }
 
+    Button{
+        string label
+        string path
+        iconString iconSrc
+    }
+
 
 
 

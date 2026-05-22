@@ -29,11 +29,37 @@ createAndAppendDiv("longartbox");
 const storyBox = createAndAppendDiv("storybox");
 const inputBox = createAndAppendDiv("inputbox");
 const questionBox = createAndAppendDiv("questionbox");
-const buttonGrid = createAndAppendDiv("buttonbox");
+const buttonGrid = createAndAppendDiv("buttongrid");
 const artGrid = createAndAppendDiv("artgrid");
 
 buttonGrid.className = "boxofboxes";
 artGrid.className = "boxofboxes";
+
+//Below is for testing purposes only. The actual images will be set up more dynamically.
+/*
+const trueArtBox = document.createElement("div");
+trueArtBox.className = "buttonsubbox";
+artGrid.append(trueArtBox);
+
+const artBox = document.createElement("img");
+artBox.src = "images/Potion2.png"
+trueArtBox.appendChild(artBox);
+
+const artBox2 = document.createElement("img");
+artBox2.src = "images/Snowball2.png"
+artBox2.className = "buttonsubbox";
+artGrid.appendChild(artBox2);
+
+const artBox3 = document.createElement("img");
+artBox3.src = "images/Potion.png"
+artBox3.className = "buttonsubbox";
+artGrid.appendChild(artBox3);
+
+const artBox4 = document.createElement("img");
+artBox4.src = "images/cloud.png"
+artBox4.className = "buttonsubbox";
+artGrid.appendChild(artBox4);
+*/
 //Note, artBox will eventually contain a grid of images equal to the number of buttonBoxes. However, these images will not be implemented until very late in the project.
 
 
@@ -136,6 +162,14 @@ function updateHTMLChapter(nextPath:string)
                 {updateHTMLChapter(button.path);
             });
             currentSubBox.appendChild(buttonElement);
+
+            const currentArtBox = document.createElement("div");
+            currentArtBox.className = "buttonsubbox";
+            artGrid.appendChild(currentArtBox);
+
+            const currentIcon = document.createElement("img");
+            currentIcon.src = button.iconSrc;
+            currentArtBox.appendChild(currentIcon);
         });
 
         const gridBoxes = document.getElementsByClassName("boxofboxes");

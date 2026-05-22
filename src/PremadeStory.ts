@@ -9,6 +9,9 @@ function constructBookSparky():Book
     const adventureBook = new Book(18);
     console.log(adventureBook);
 
+    const snowball = "images/Snowball2.png";
+
+
     //Volume 1
     {
         adventureBook.constructChapter(
@@ -16,7 +19,7 @@ function constructBookSparky():Book
             ["This is the story of [Protagonist] [Surname], a brave young boy with superpowers.",
                 "One day, [Protagonist]'s father pulls him and his two older brothers, [Eldest Brother] and [Second Brother], aside and brings him to the family's secret library. He shows them four books, each with hidden techniques on superpowers."],
             "Which book will [Protagonist] choose?",
-            [{label:"Fire", path:"path2Fire"}, {label:"Water", path:"path2Water"}, {label:"Air", path:"path2Air"}, {label:"Earth", path:"path2Earth"}]
+            [{label:"Fire", path:"path2Fire", iconSrc:snowball}, {label:"Water", path:"path2Water", iconSrc:snowball}, {label:"Air", path:"path2Air", iconSrc:snowball}, {label:"Earth", path:"path2Earth", iconSrc:snowball}]
         );
     }
     //Volume 2
@@ -27,7 +30,7 @@ function constructBookSparky():Book
                 "After years of reluctant practice, he developed his own variation of the book's fire powers, lightning! This variation is much stronger. He can beat the younger of his two older brothers now, but his oldest brother is still the strongest.",
                 "[Protagonist] has a new problem now. He has tried to ignore the truth his entire childhood, but he can no longer ignore reality. His dad is a supervillain."],
             "What should he do?",
-            [{label:"Fight",path:"path3Fight"}]
+            [{label:"Fight",path:"path3Fight", iconSrc:snowball}]
         );
         
         adventureBook.constructChapter(
@@ -35,7 +38,7 @@ function constructBookSparky():Book
             ["[Protagonist] reluctantly picked up the book on water powers. But he has absolutely no talent for superpowers. His older brothers both laugh at him.",
                 "[Protagonist] has a new problem now. He has tried to ignore the truth his entire childhood, but he can no longer ignore reality. His dad is a supervillain."],
             "To be continued.",
-            [{label:"Fight?", path:"badpath3Water"}]
+            [{label:"Fight?", path:"badpath3Water", iconSrc:snowball}]
         );
             
         adventureBook.constructChapter(
@@ -43,7 +46,7 @@ function constructBookSparky():Book
             ["[Protagonist] felt drawn to the book on air related superpowers, almost as if he was destined to read it.", "After practicing for a few years, he developed his own specialty. Now he can generate his own lightning!",
                 "[Protagonist] has a new problem now. He has tried to ignore the truth his entire childhood, but he can no longer ignore reality. His dad is a supervillain."],
             "What should he do?",
-            [{label:"Fight", path:"path3Fight"}]
+            [{label:"Fight", path:"path3Fight", iconSrc:snowball}]
         );
             
         adventureBook.constructChapter(
@@ -51,7 +54,7 @@ function constructBookSparky():Book
             ["[Protagonist] picked up the book on earth. It was a bit dry, but he did like the parts about controlling various metals.", "After years of practice, he develops his own variation of superpowers, magnetism.",
                 "[Protagonist] has a new problem now. He has tried to ignore the truth his entire childhood, but he can no longer ignore reality. His dad is a supervillain."],
             "What should he do?",
-            [{label:"Fight", path:"path3Fight"}]
+            [{label:"Fight", path:"path3Fight", iconSrc:snowball}]
         );
     }
     //Volume 3
@@ -61,7 +64,7 @@ function constructBookSparky():Book
             ["[Protagonist] fights desperately to stand up against his father's supervillain reign of terror. [Eldest Brother] and some of their friends join him. Using a laser pistol developed by one of his father's minions, [Protagonist] manages to hit his father's leg, but ultimately, both sides have superpower, and the other side has a lot more experience.",
                 "[Protagonist] lost this battle, and in a panic, he and his allies scatter and flee."],
             "Who will he go with?",
-            [{label:"Friend",path:"path4Friend"}]
+            [{label:"Friend",path:"path4Friend", iconSrc:snowball}]
         );
 
         adventureBook.constructChapter(
@@ -78,7 +81,7 @@ function constructBookSparky():Book
             ["[Protagonist] follows a friend, [Friend 1], west. Together, they cross the sea. Just as they are about to reach land, however, a sea monster attacks them, and he is separated from [Friend 1].",
                 "After an epic battle against the sea monster, he eventually escapes its grasp and swims the rest of the way to the shore. He reaches a large city by the coast and starts to wander the streets. [Enormous City] is even bigger than his home city, but not very friendly. [Protagonist] has no food, and now he is starving."],
             "How will [Protagonist] eat tonight?",
-            [{label:"Find Job",path:"path5Job"}],
+            [{label:"Find Job",path:"path5Job", iconSrc:snowball}],
         );
     }
     //Volume 5
@@ -90,7 +93,7 @@ function constructBookSparky():Book
                 "One day, a boy [Friend 2] discovers [Protagonist] and takes him to a food kitchen run by his mother.",
                 "[Friend 2]'s mother gives him a part time job at the food kitchen."],
             "[Protagonist] has a lot of free time on his hands now. How will he spend it?",
-            [{label:"Work Out", path:"path6Train"}]
+            [{label:"Work Out", path:"path6Train", iconSrc:snowball}]
         );
     }
     //Volume 6
@@ -106,7 +109,7 @@ function constructBookSparky():Book
                 "However, this doesn't solve everything. The riots are still ongoing. The local king, King [King], ends up abdicating his throne to prevent a civil war. The kingdom divides into a loose confederation of city states, and [Enormous City] holds an election for a new mayor to adjust to the times.",
                 "The riots slowly die down, but not everyone is appeased. A few weeks after defeating his father, our protagonist sees a girl his age being attacked by rioters."],
             "Will he help her?",
-            [{label:"Obviously",path:"path7Rescue"}]
+            [{label:"Obviously",path:"path7Rescue", iconSrc:snowball}]
         );
     }
     //Volume 7
@@ -116,7 +119,7 @@ function constructBookSparky():Book
             ["He saved the girl with ease! She is impressed by his act of heroism. She's quite pretty too. She said her name is [Girl 1], and that one day she would repay him. [Protagonist] likes how this turned out. It feels good to be thanked.",
                 "The next day, as he is thinking about his encounter with [Girl 1], he encounters a second girl, this one much younger, being attacked by rioters. But when he tries to rescue her, she attacks him! The rioters are all knocked back."],
             "How will he defend himself?",
-            [{label:"Fight Back",path:"path8Fight"}, {label:"Run Away",path:"path8Run"}]
+            [{label:"Fight Back",path:"path8Fight", iconSrc:snowball}, {label:"Run Away",path:"path8Run", iconSrc:snowball}]
         );
     }
     //Volume 8
@@ -128,7 +131,7 @@ function constructBookSparky():Book
                 "The local people witnessed this intense battle. By the end of the day, everyone in [Enormous City] begins to hail [Protagonist] as the hero who saved them from the supervillain. He's quite popular now!",
                 "This popularity doesn't come without earning some grudges, though. The newly elected mayor, [New Mayor], hates him, and says that people don't need vigilantes when the police force is perfectly capable of protecting the people."],
             "What should [Protagonist] do?",
-            [{label:"Be a Hero",path:"path9Hero"}]
+            [{label:"Be a Hero",path:"path9Hero", iconSrc:snowball}]
         );
     
         adventureBook.constructChapter(
@@ -145,7 +148,7 @@ function constructBookSparky():Book
             ["As an official superhero, he quickly makes a name for himself as [Alter Ego]. [Alter Ego] has lots of fans, and is especially popular with the ladies, many of whom for the [Alter Ego] fan club. His biggest fans are [Girl 2], [Girl 3], and [Girl 4]",
                 "[Girl 1] approaches [Protagonist] one day, and asks him on a date."],
             "What should he do?",
-            [{label:"Date",path:"path10Date"},{label:"Decline",path:"path10Reject"}]
+            [{label:"Date",path:"path10Date", iconSrc:snowball},{label:"Decline",path:"path10Reject", iconSrc:snowball}]
         );
     }
     //Volume 10
@@ -157,7 +160,7 @@ function constructBookSparky():Book
                 "[Girl 1] knows about his secret identity, but now she wants to know about his past. He is hesitant to tell her about his supervillain father, but he tells her everything. She is alarmed at first, but she still sees him for who he is, not as his father's son.",
                 "After the date, [Alter Ego] is approached by [Big Gang], the biggest mafia in [Enormous City]. Their leader, [Big Gang Leader], wants him to look the other way when he sees them commiting crimes. In exchange, they promise to tip him off on any other criminals they see and to fund his superhero activities. [Alter Ego] can refuse, of course, but they warn that he may not like what they do next."],
             "For some reason, it feels like there isn't really a choice. Should he accept the funding?",
-            [{label:"Cooperate",path:"path11Bribe"}]
+            [{label:"Cooperate",path:"path11Bribe", iconSrc:snowball}]
         );
 
         adventureBook.constructChapter(
@@ -176,7 +179,7 @@ function constructBookSparky():Book
                 "Suddenly, one of the superheroes creates a massive fireball and tosses it at [Big Gang Leader]. The villain dodges, but the fireball hits one of the [Big Gang]'s warehouses. There is a small explosion, followed moments later by an even larger and deadlier one; the fireball hit the ammunition supply.",
                 "The superheroes all retreat and vanish. Meanwhile, the fire spreads at a sickening rate."],
             "What should he do?",
-            [{label:"Rescue",path:"path12Rescue"}]//Options will include confronting the heroes, saving the victims, or letting the villains suffer.
+            [{label:"Rescue",path:"path12Rescue", iconSrc:snowball}]//Options will include confronting the heroes, saving the victims, or letting the villains suffer.
         );
     }
     //Volume 12
@@ -192,7 +195,7 @@ function constructBookSparky():Book
                 "After a long pause, she quietly scolds him for taking the bribe. \"[Protagonist], if you needed money, you should have just asked me! My family is still the wealthiest in [Enormous City]!\" She confiscates the \"funding\" from [Big Gang] and turns it into a police box. [Protagonist] doesn't have the heart at the moment to tell her that he suspects the police are corrupt.",
                 "When she gets back, [Girl 1] asks [Protagonist] to let her be his sidekick. She doesn't have any superpowers, but she feels [Protagonist] needs an accountability partner."],
             "Should he allow [Girl 1] become his sidekick?",
-            [{label:"Accept",path:"path13Sidekick"}]//Other choices could include quitting or rejecting her.
+            [{label:"Accept", path:"path13Sidekick", iconSrc:snowball}]//Other choices could include quitting or rejecting her.
         );
     }
     //Volume 13
@@ -204,7 +207,7 @@ function constructBookSparky():Book
                 "[New Mayor], on the other hand, launches a huge campaign against [Alter Ego]. It's somewhat effective against the populace, and the police are constantly chasing after the duo.",
                 "One day, [Alter Ego] finds [Girl 3] and [Girl 4], members of his fan club, fighting over him. They each insist that they love him most."],
             "Who loves him most?",
-            [{label:"Sidekick",path:"path14Loyalty"}]
+            [{label:"Sidekick",path:"path14Loyalty", iconSrc:snowball}]
         );
     }
     //Volume 14
@@ -215,7 +218,7 @@ function constructBookSparky():Book
                 "One day, a world domination organization calling itself the [Surname] Syndicate sends a letter to [Protagonist]. [Protagonist] is alarmed. [Surname] Syndicate was the reason he had fought against his father a few years ago. It should have been disbanded after his father's defeat. The letter invites him to a secret meeting to \"discuss the future of the world\".",
                 "A second letter arrives as well, this one addressed to [Alter Ego]."],
             "Should he attend?",
-            [{label:"Attend As Self",path:"path15Self"}]//Other choices are to attend as a hero, or refuse.
+            [{label:"Attend As Self",path:"path15Self", iconSrc:snowball}]//Other choices are to attend as a hero, or refuse.
         );
     }
     //Volume 15
@@ -226,7 +229,7 @@ function constructBookSparky():Book
                 "[Eldest Brother] reveals that he took over the [Surname] Syndicate after they defeated their father. He says that he did this because he discovered that an alien invasion was coming to earth. There are only a few more years left until the aliens arrive.",
                 "In order to save Earth, [Eldest Brother] believes the best way is to conquer it, then unify it so they can stand together against the aliens. [Protagonist] isn't sure what to think of this plan."],
             "How will he respond to this news?",
-            [{label:"Do It His Own Way",path:"path16Hero"}]//Alternatively, he can join them.
+            [{label:"Do It His Own Way",path:"path16Hero", iconSrc:snowball}]//Alternatively, he can join them.
         );
     }
     //Volume 16
@@ -238,7 +241,7 @@ function constructBookSparky():Book
                 "[Eldest Brother] is irrate, but [Friend 1] and [Animal Girl] respect [Protagonist]'s decision and convince [Eldest Brother] to let [Protagonist] go.",
                 "After years of training, the day comes, just as [Eldest Brother] warned. A huge portal opens in the arctic, and an army of aliens pours out! The leader, [Invasion Leader], is exceptionally powerful."],
             "What will he do?",
-            [{label:"Close Portal",path:"path17Portal"},{label:"Fight Leader",path:"path17Leader"}]
+            [{label:"Close Portal",path:"path17Portal", iconSrc:snowball},{label:"Fight Leader",path:"path17Leader", iconSrc:snowball}]
         );
     }
     //Volume 17
@@ -249,7 +252,7 @@ function constructBookSparky():Book
                 "But [Protagonist] does not give up. He tackles the invader head on with bolt after bolt of lightning!",
                 "The battle rages for an unkkown amount of time. Eventually, the invader is exausted, and he retreats back through his portal."],
             "...",
-            [{label:"Proceed",path:"path18Victory"},{label:"Retreat",path:"path18Mercy"}]
+            [{label:"Proceed",path:"path18Victory", iconSrc:snowball},{label:"Retreat",path:"path18Mercy", iconSrc:snowball}]
         );
 
         adventureBook.constructChapter(
@@ -259,7 +262,7 @@ function constructBookSparky():Book
                 "But [Alter Ego] was never aiming at [Invasion Leader]; his lighting bolt hits the edge of the portal. Suddenly, there is a violent shaking, and the portal collapses! [Invasion Leader] pales. \"No, anything but that! Run!\" The fireball flickes and vanishes. All of the aliens tremble, drop their weapons, and run.",
                 "But before the people of Earth can cheer, they notice something is off. The aliens are running towards them, trying desperately to get past the perimeter. After a moment, it becomes clear why; the air where the portal was is now pulsing ominously. Breaking the portal by force has created an unstable spacetime rift. Everyone, human and alien alike, begins to flee."],
             "What will [Alter Ego] do? (To be continued)",
-            [{label:"Reopen Portal",path:"path18Reopen"},{label:"Run",path:"path18Run"},{label:"Close Portal Again",path:"path18Close"}]
+            [{label:"Reopen Portal",path:"path18Reopen", iconSrc:snowball},{label:"Run",path:"path18Run", iconSrc:snowball},{label:"Close Portal Again",path:"path18Close", iconSrc:snowball}]
         );
     }
     //Volume 18

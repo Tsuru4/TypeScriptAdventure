@@ -39,6 +39,11 @@ Libraries:
 - [Google.com](https://google.com/search) Particuarly helpful for MacOS specific instalation instructions.
 - [Youtube Net Ninja's TypeScript Tutorials](https://www.youtube.com/watch?v=Y4IiQY9dNRA&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI&index=7)
 
+# Ackowledgements
+
+- The images used in this project were not drawn by me. All credit for the art goes to David Martinez.
+- Special thanks to my family and friends for helping test my project.
+
 # To Do List
 
 - [x] Research basic TypeScript principles and experiment with small projects such as Hello World.
