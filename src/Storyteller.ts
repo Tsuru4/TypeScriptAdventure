@@ -131,6 +131,7 @@ function updateHTMLChapter(nextPath:string)
         storyBox.innerHTML = "";
         questionBox.innerHTML = "";
         buttonGrid.innerHTML = "";
+        artGrid.innerHTML = "";
 
         const chapterHeading = document.createElement("h1");
         chapterHeading.textContent = headingString;

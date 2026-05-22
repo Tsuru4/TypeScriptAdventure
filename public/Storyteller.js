@@ -106,6 +106,7 @@ function updateHTMLChapter(nextPath) {
         storyBox.innerHTML = "";
         questionBox.innerHTML = "";
         buttonGrid.innerHTML = "";
+        artGrid.innerHTML = "";
         const chapterHeading = document.createElement("h1");
         chapterHeading.textContent = headingString;
         storyBox.appendChild(chapterHeading);
@@ -134,7 +135,7 @@ function updateHTMLChapter(nextPath) {
             currentArtBox.className = "buttonsubbox";
             artGrid.appendChild(currentArtBox);
             const currentIcon = document.createElement("img");
-            currentIcon.src = button.icon;
+            currentIcon.src = button.iconSrc;
             currentArtBox.appendChild(currentIcon);
         });
         const gridBoxes = document.getElementsByClassName("boxofboxes");
