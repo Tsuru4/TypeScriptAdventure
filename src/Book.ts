@@ -13,6 +13,7 @@ export class Book
     private storyDictionary: Map<string,string> = new Map<string,string>();
     private buttonLog: button[] = [];
     private foundNewKey: boolean = false;
+    private premadeDictionary: Map<string,string> = new Map<string,string>();
 
     constructor(totalVolumes:number)
     {
@@ -23,6 +24,19 @@ export class Book
         for (let i = 1; i < totalVolumes; i++)
         {
             this.volumes.push(new Map<string,Chapter>());
+        }
+    }
+
+    public setPremadeDictionary(premadeDictionary:Map<string,string>)
+    {
+        this.premadeDictionary = premadeDictionary;
+    }
+
+    public usePremadeDictionary()
+    {
+        for (const [key,value] of this.premadeDictionary)
+        {
+            this.storyDictionary.set(key,value);
         }
     }
 

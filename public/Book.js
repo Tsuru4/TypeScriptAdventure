@@ -9,12 +9,21 @@ export class Book {
     storyDictionary = new Map();
     buttonLog = [];
     foundNewKey = false;
+    premadeDictionary = new Map();
     constructor(totalVolumes) {
         if (totalVolumes <= 0) {
             throw new Error("Total chapters must be a positive number");
         }
         for (let i = 1; i < totalVolumes; i++) {
             this.volumes.push(new Map());
+        }
+    }
+    setPremadeDictionary(premadeDictionary) {
+        this.premadeDictionary = premadeDictionary;
+    }
+    usePremadeDictionary() {
+        for (const [key, value] of this.premadeDictionary) {
+            this.storyDictionary.set(key, value);
         }
     }
     setChapterInVolume(volumeIndex, path, chapter) {

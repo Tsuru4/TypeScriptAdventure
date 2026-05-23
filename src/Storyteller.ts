@@ -36,6 +36,13 @@ const artGrid = createAndAppendDiv("artgrid");
 buttonGrid.className = "boxofboxes";
 artGrid.className = "boxofboxes";
 
+const tempButton = document.createElement("button");
+tempButton.textContent = "Click here to autofill all custom names.";
+tempButton.addEventListener("click", () => 
+        {usePremadeDictionary();
+    });
+    storytellerContent.appendChild(tempButton);
+
 /**
  * 
  * @param nextDictionaryValue A string to pass to Book so it can update character names.
@@ -147,6 +154,17 @@ function displayFullStory()
         p.textContent = paragraph;
         storyBox.appendChild(p);
     });
+
+    buttonGrid.innerHTML = "";
+}
+
+function usePremadeDictionary()
+{
+    adventureBook.usePremadeDictionary();
+    if (tempButton)
+    {
+        tempButton.remove();
+    }
 }
 
 /**
