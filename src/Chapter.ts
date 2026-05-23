@@ -209,6 +209,7 @@ export class Chapter
      */
     public getStoryStrings():string[]
     {
+        this.updateStringKeywords();
         return (this.storyBox);
     }
 

@@ -160,6 +160,7 @@ export class Chapter {
      * @returns The reference to the array of story strings.
      */
     getStoryStrings() {
+        this.updateStringKeywords();
         return (this.storyBox);
     }
     getButtonAmount() {
