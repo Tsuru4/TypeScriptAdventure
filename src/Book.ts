@@ -36,7 +36,10 @@ export class Book
     {
         for (const [key,value] of this.premadeDictionary)
         {
-            this.storyDictionary.set(key,value);
+            if ((!this.storyDictionary.has(key))||(this.storyDictionary.get(key)==""))
+            {
+                this.storyDictionary.set(key,value);
+            }
         }
     }
 
@@ -103,7 +106,7 @@ export class Book
     public constructChapter(
         volumeIndex:number,
         path:string,
-        storyBox:string[], questionBox:string, buttonBox:button[])
+        storyBox:string[], questionBox:string, buttonBox:button[]):Chapter
     {
         if (volumeIndex == this.volumes.length && buttonBox.length > 0)
         {
@@ -116,6 +119,7 @@ export class Book
         }
         const chapter = new Chapter(this.storyDictionary, storyBox, questionBox, buttonBox);
         this.setChapterInVolume(volumeIndex, path, chapter);
+        return chapter;
     }
 
     //? AI seems to be predicting my code as I write. This is weird. I thought I had turned this feature off a few months ago.

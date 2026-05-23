@@ -23,7 +23,9 @@ export class Book {
     }
     usePremadeDictionary() {
         for (const [key, value] of this.premadeDictionary) {
-            this.storyDictionary.set(key, value);
+            if ((!this.storyDictionary.has(key)) || (this.storyDictionary.get(key) == "")) {
+                this.storyDictionary.set(key, value);
+            }
         }
     }
     setChapterInVolume(volumeIndex, path, chapter) {
@@ -83,6 +85,7 @@ export class Book {
         }
         const chapter = new Chapter(this.storyDictionary, storyBox, questionBox, buttonBox);
         this.setChapterInVolume(volumeIndex, path, chapter);
+        return chapter;
     }
     //? AI seems to be predicting my code as I write. This is weird. I thought I had turned this feature off a few months ago.
     // The results are impressive though. It seems to have guessed what I wanted by reading my notes from TypeScriptAdventure.ts. Accurately too.

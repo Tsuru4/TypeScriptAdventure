@@ -10,16 +10,17 @@ flowchart
     path3Fight[Fight Father]
 
     path3Fight --> path4Friend[Friend]
-    path3Fight --> path4Brother{Unfinished}
-    path3Fight --> path4Solo{Unfinished}
+    path3Fight --> path4Brother((Bad End))
+    path3Fight --> path4Solo[Solo] --> path5StealSolo[Steal] --> path6TrainDesert[Work Out]
     path3Fight --> path4Home{Unfinished}
 
     path4Friend --> path5Job[Get Job]
-    path4Friend --> path5Steal{Unfinished}
+    path4Friend --> path5StealFriend{Unfinished}
 
-    path5Job --> path6Train[Work Out]
+    path5Job --> path6TrainOcean[Work Out]
 
-    path6Train --> path7Rescue[Rescue]
+    path6TrainOcean --> path7Rescue[Rescue]
+    path6TrainDesert --> path7Rescue
 
     path7Rescue --> path8Fight[Fight]
     path7Rescue --> path8Run((Run: Bad End))

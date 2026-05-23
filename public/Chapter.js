@@ -4,6 +4,7 @@ export class Chapter {
     buttonBox;
     //Reminder, storyDictionary is a reference to a map which the Book is sharing with its Chapters. Again, this is passed by reference, not by value.
     storyDictionary;
+    overrideDictionary = new Map();
     /**
      *
      * @param storyDictionary A reference to a map of variable names this chapter will need to filter out of its strings later. The key is the name of the variable.
@@ -19,6 +20,27 @@ export class Chapter {
         this.storyBox = storyBox;
         this.questionBox = questionBox;
         this.buttonBox = this.shuffleList(buttonBox);
+    }
+    //! Not yet tested
+    /**
+     * This function sets up values in preparation to override the book dictionary.
+     * @param key
+     * @param value
+     */
+    setOverrideDictionary(key, value) {
+        this.overrideDictionary.set(key, value);
+    }
+    /**
+     * Overrides the story dictionary.
+     * Does not override if the term is not in the dictionary (This loophole leaves room for the user to still be able to customize the name if desired).
+     */
+    triggerOverrideDictionary() {
+        for (const [key, value] of this.overrideDictionary) {
+            if (this.storyDictionary.has(key)) {
+                this.storyDictionary.set(key, value);
+            }
+        }
+        this.overrideDictionary.clear();
     }
     /**
      *Replaces all keywords in the strings with new values.
@@ -50,6 +72,7 @@ export class Chapter {
      * This could technically be called upon construction, but I want them added one chapter at a time.
      */
     identifyAllKeys() {
+        this.triggerOverrideDictionary();
         //First step, search all strings in story and question for new keys.
         for (let i = 0; i < this.storyBox.length; i++) {
             const currentString = this.storyBox[i];
@@ -163,6 +186,7 @@ export class Chapter {
         this.updateStringKeywords();
         return (this.storyBox);
     }
+    //? Is this method actually being called anywhere?
     getButtonAmount() {
         return this.buttonBox.length;
     }

@@ -9,6 +9,7 @@ export class Chapter
 
     //Reminder, storyDictionary is a reference to a map which the Book is sharing with its Chapters. Again, this is passed by reference, not by value.
     private storyDictionary:Map<string,string>;
+    private overrideDictionary:Map<string,string> = new Map<string,string>();
     
     /**
      * 
@@ -26,6 +27,33 @@ export class Chapter
         this.storyBox = storyBox;
         this.questionBox = questionBox;
         this.buttonBox = this.shuffleList(buttonBox);
+    }
+
+//! Not yet tested
+    /**
+     * This function sets up values in preparation to override the book dictionary.
+     * @param key 
+     * @param value 
+     */
+    public setOverrideDictionary(key:string,value:string)
+    {
+        this.overrideDictionary.set(key,value);
+    }
+
+    /**
+     * Overrides the story dictionary.
+     * Does not override if the term is not in the dictionary (This loophole leaves room for the user to still be able to customize the name if desired).
+     */
+    public triggerOverrideDictionary()
+    {
+        for (const [key,value] of this.overrideDictionary)
+        {
+            if (this.storyDictionary.has(key))
+            {
+                this.storyDictionary.set(key,value);
+            }
+        }
+        this.overrideDictionary.clear();
     }
 
     /**
@@ -67,6 +95,7 @@ export class Chapter
      */
     private identifyAllKeys()
     {
+        this.triggerOverrideDictionary();
         //First step, search all strings in story and question for new keys.
         for(let i = 0; i < this.storyBox.length; i++)
         {
@@ -213,6 +242,7 @@ export class Chapter
         return (this.storyBox);
     }
 
+//? Is this method actually being called anywhere?
     public getButtonAmount():number
     {
         return this.buttonBox.length;

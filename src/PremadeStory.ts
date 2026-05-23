@@ -100,7 +100,7 @@ function constructBookSparky():Book
             [{label:"Friend",path:"path4Friend", iconSrc:iconWater},
                 {label:"Brother",path:"badpath4Brother", iconSrc:iconEarth},
                 {label:"(Under Development)",path:"path4Home", iconSrc:iconFire},
-                {label:"(Under Development)",path:"path4Solo", iconSrc:iconAir}]
+                {label:"Fly Solo",path:"path4Solo", iconSrc:iconAir}]
         );
 
         adventureBook.constructChapter(
@@ -135,15 +135,15 @@ function constructBookSparky():Book
                 "Almost immediately, however, he realizes his problems aren't over yet. He has no food, no shelter, and no money. He is a refugee in a strange land, and everyone views him with distrust.",
                 "He manages to salvage his plane into a makeshift home, and he uses his powers to repair the plane's air conditioner.",
                 "But he is still starving and broke."],
-                "(To be continued).",
-                []
+            "How will [Protagonist] eat tonight?",
+            [{label:"Steal Food",path:"path5Steal", iconSrc:iconSnowball}],
         );
 
         adventureBook.constructChapter(
             4, "path4Home",
             ["[Protagonist] surrenders and allows his father to catch him. He knows his father will punish him horribly, but if turning himself in distracts his father long enough for [Eldest Brother] and all of their friends to get away, then it's worth it.",],
-                "(To be continued).",
-                []
+            "(To be continued).",
+            []
         );
     }
     //Volume 5
@@ -155,21 +155,43 @@ function constructBookSparky():Book
                 "One day, a boy [Friend 2] discovers [Protagonist] and takes him to a food kitchen run by his mother.",
                 "[Friend 2]'s mother gives him a part time job at the food kitchen."],
             "[Protagonist] has a lot of free time on his hands now. How will he spend it?",
-            [{label:"Work Out", path:"path6Train", iconSrc:iconSnowball}]
+            [{label:"Work Out", path:"path6TrainOcean", iconSrc:iconSnowball}]
+        );
+
+        adventureBook.constructChapter(
+            5, "path5Steal",
+            ["[Protagonist] turns to thievery to get by. He feels guilty at first, but he slowly grows numb to it. His priority is to survive. He would look for honest work, but the locals already hate him."],
+            "[Protagonist] has some free time on his hands now. How will he spend it?",
+            [{label:"Work Out", path:"path6TrainDesert", iconSrc:iconSnowball}]
         );
     }
     //Volume 6
     {
         adventureBook.constructChapter(
-            6, "path6Train",
+            6, "path6TrainOcean",
             ["Although he is now hundreds of miles away from home, [Protagonist] still remembers his defeat at the hands of his father. In his free time, he anxiously practices his superpowers. And at night, when no one is watching, he prowls the streets and gets in fist fights with the local gang members.",
                 "A few years of diligent training pass in the blink of an eye, and now he is fourteen. He is very powerful, and now he wins most of his fights against the gangs.",
-                "He has gotten strong just in time too; all is not well in the world around him.",
+                "He has become stronger just in time too; all is not well in the world around him.",
                 "Now, riots are breaking out throughout the local kingdom, and his father tries to make an ambitious bid to take over it.",
                 "This time, our hero is ready. Together with [Eldest Brother], they prepare an ambush and intercept their father's invasion. It's a difficult battle, and they nearly lose.",
                 "Just when all hope is lost, [Friend 1] arrives with reinforcements! The three boys take down their father and his minions.",
                 "However, this doesn't solve everything. The riots are still ongoing. The local king, King [King], ends up abdicating his throne to prevent a civil war. The kingdom divides into a loose confederation of city states, and [Enormous City] holds an election for a new mayor to adjust to the times.",
                 "The riots slowly die down, but not everyone is appeased. A few weeks after defeating his father, our protagonist sees a girl his age being attacked by rioters."],
+            "Will he help her?",
+            [{label:"Obviously",path:"path7Rescue", iconSrc:iconSnowball}]
+        );
+
+        adventureBook.constructChapter(
+            6, "path6TrainDesert",
+            ["Although he is now well over a thousand miles from home, [Protagonist] still remembers his defeat at the hands of his father. In his free time, he anxiously practices his superpowers. And at night, when no one is watching, he prowls the dessert and gets in fist fights with the local thieves.",
+                "A few years of diligent training pass in the blink of an eye, and now he is fourteen. He is very powerful, and now he wins most of his fights.",
+                "He got stronger just in time too; all is not well in the world.",
+                "Now, riots are breaking out throughout a distant kingdom across the ocean, and his father is sure to make an ambitious bid to take over it.",
+                "This time, our hero decides to take advantage of this. Together with [Eldest Brother], he prepares an ambush and intercepts their father's invasion. It's a difficult battle, and they nearly lose.",
+                "Just when all hope is lost, [Friend 1] arrives with reinforcements! The three boys take down [Protagonist]'s father and his minions.",
+                "However, this doesn't solve everything. [Second Brother] is nowhere to be seen. [Protagonist] gets an uneasy feeling that [Second Brother] is out there somewhere, trying to finish what their father started. He searches his brother's room, and finds clues leading to [Enormous City], the largest city in the world. It's on the coastline of the kingdom which their father was last trying to invade.",
+                "[Protagonist] investigates further. While he and [Eldest Brother] had been intercepting their father, the local king, King [King], ended up abdicating his throne to prevent a civil war. The kingdom is now divided into a loose confederation of city states.[Enormous City] has held an election for a new mayor, which has helped calm the riots tremendously.",
+                "[Protagonist] arrives in [Enormous City] just as the riots are dying down, but not everyone is appeased yet. The day he arrives, [Protagonist] sees a girl his age being attacked by rioters."],
             "Will he help her?",
             [{label:"Obviously",path:"path7Rescue", iconSrc:iconSnowball}]
         );
@@ -250,7 +272,7 @@ function constructBookSparky():Book
             12, "path12Rescue",
             ["Our hero chooses to search the building for survivors. Among the survivors, he discovers [Girl 2] shielding a baby. Her arms are horribly burned, but the baby is safe. He gets her out of the building and takes her to the hosipital as fast as he can.",
                 "While [Girl 2] is in the emergency room, [Alter Ego] is left watching the baby. After a while, [Big Gang Leader] rushes into the waiting room. He looks awful. He searches the room anxiously, then sees [Alter Ego]. He calms down somewhat once he sees the baby.",
-                "\"She's safe!\" [Big Gang Leader] let's out a sigh of relief. The baby is his only daughter, [Baby]. [Big Gang Leader] is not completely at ease though. He looks everywhere for his little sister, [Girl 2].",
+                "\"She's safe!\" [Big Gang Leader] lets out a sigh of relief. The baby is his only daughter, [Baby]. [Big Gang Leader] is not completely at ease though. He looks everywhere for his little sister, [Girl 2].",
                 "A doctor comes out and informs them that [Girl 2]'s burns are serious, and her arms need amputation. [Big Gang Leader] is stunned.",
                 "[Alter Ego] decides to leave this man some space to grieve. He goes home and takes off his disguise for the day.",
                 "At home, he barely gets any rest when he hears a knock at the door. It's [Girl 1]. She notices [Protagonist]'s expression and asks him what's wrong. He tells her everything.",
