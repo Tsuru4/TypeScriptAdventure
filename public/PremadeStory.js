@@ -40,7 +40,10 @@ function constructBookSparky() {
     //Volume 1
     {
         adventureBook.constructChapter(1, "path1", ["This is the story of [Protagonist] [Surname], a brave young boy with superpowers.",
-            "One day, [Protagonist]'s father pulls him and his two older brothers, [Eldest Brother] and [Second Brother], aside and brings him to the family's secret library. He shows them four books, each with hidden techniques on superpowers."], "Which book will [Protagonist] choose?", [{ label: "Fire", path: "path2Fire", iconSrc: iconFire }, { label: "Water", path: "path2Water", iconSrc: iconWater }, { label: "Air", path: "path2Air", iconSrc: iconAir }, { label: "Earth", path: "path2Earth", iconSrc: iconEarth }]);
+            "One day, [Protagonist]'s father pulls him and his two older brothers, [Eldest Brother] and [Second Brother], aside and brings him to the family's secret library. He shows them four books, each with hidden techniques on superpowers."], "Which book will [Protagonist] choose?", [{ label: "Fire", path: "path2Fire", iconSrc: iconFire },
+            { label: "Water", path: "path2Water", iconSrc: iconWater },
+            { label: "Air", path: "path2Air", iconSrc: iconAir },
+            { label: "Earth", path: "path2Earth", iconSrc: iconEarth }]);
     }
     //Volume 2
     {
@@ -57,13 +60,24 @@ function constructBookSparky() {
     //Volume 3
     {
         adventureBook.constructChapter(3, "path3Fight", ["[Protagonist] fights desperately to stand up against his father's supervillain reign of terror. [Eldest Brother] and some of their friends join him. Using a laser pistol developed by one of his father's minions, [Protagonist] manages to hit his father's leg, but ultimately, both sides have superpower, and the other side has a lot more experience.",
-            "[Protagonist] lost this battle, and in a panic, he and his allies scatter and flee."], "Who will he go with?", [{ label: "Friend", path: "path4Friend", iconSrc: iconSnowball }]);
+            "[Protagonist] lost this battle, and in a panic, he and his allies scatter and flee."], "Who will he go with?", [{ label: "Friend", path: "path4Friend", iconSrc: iconWater },
+            { label: "Brother", path: "badpath4Brother", iconSrc: iconEarth },
+            { label: "(Under Development)", path: "path4Home", iconSrc: iconFire },
+            { label: "(Under Development)", path: "path4Solo", iconSrc: iconAir }]);
         adventureBook.constructChapter(3, "badpath3Water", ["[Protagonist] attempted to fight his father, but he lost badly. It wasn't even a contest. He was grounded for life."], "The end.", []);
     }
     //Volume 4
     {
         adventureBook.constructChapter(4, "path4Friend", ["[Protagonist] follows a friend, [Friend 1], west. Together, they cross the sea. Just as they are about to reach land, however, a sea monster attacks them, and he is separated from [Friend 1].",
             "After an epic battle against the sea monster, he eventually escapes its grasp and swims the rest of the way to the shore. He reaches a large city by the coast and starts to wander the streets. [Enormous City] is even bigger than his home city, but not very friendly. [Protagonist] has no food, and now he is starving."], "How will [Protagonist] eat tonight?", [{ label: "Find Job", path: "path5Job", iconSrc: iconSnowball }]);
+        adventureBook.constructChapter(4, "badpath4Brother", ["He follows [Eldest Brother] to the southeast. But as they flee, their father and [Second Brother] pursue them.",
+            "[Eldest Brother] scowls. \"Why'd you follow me?! If we had split up, at least one of us could have gotten away!\"",
+            "The two adolescent boys are swiftly captured and taken home. They get grounded for life."], "The end.", []);
+        adventureBook.constructChapter(4, "path4Solo", ["[Protagonist] steals a small plane from his father's henchmen and escapes south. Eventually he reaches a desert city, and just in time, because the plane ran our of fuel! This place should be far beyond his father's reach!",
+            "Almost immediately, however, he realizes his problems aren't over yet. He has no food, no shelter, and no money. He is a refugee in a strange land, and everyone views him with distrust.",
+            "He manages to salvage his plane into a makeshift home, and he uses his powers to repair the plane's air conditioner.",
+            "But he is still starving and broke."], "(To be continued).", []);
+        adventureBook.constructChapter(4, "path4Home", ["[Protagonist] surrenders and allows his father to catch him. He knows his father will punish him horribly, but if turning himself in distracts his father long enough for [Eldest Brother] and all of their friends to get away, then it's worth it.",], "(To be continued).", []);
     }
     //Volume 5
     {

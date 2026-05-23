@@ -85,7 +85,6 @@ export class Book
                 return;
             }
         }
-        throw new Error("This line of code should never be reachable.");
     }
 
     /**

@@ -140,6 +140,7 @@ function updateTopArt()
     const currentIcon = document.createElement("img");
     currentIcon.src = adventureBook.getRecentIconSrc();
     topArtBox.appendChild(currentIcon);
+    console.log(adventureBook.getRecentIconSrc());
 }
 
 function displayFullStory()
@@ -161,6 +162,7 @@ function displayFullStory()
 function usePremadeDictionary()
 {
     adventureBook.usePremadeDictionary();
+    inputBox.innerHTML = "";
     if (tempButton)
     {
         tempButton.remove();
@@ -251,4 +253,4 @@ function updateHTMLChapter(nextButton:button)
 }
 
 //This call acts as the "first domino".
-updateHTMLChapter({label:"",path:"path1",iconSrc:"Potion.png"});
+updateHTMLChapter({label:"",path:"path1",iconSrc:"images/Potion.png"});
