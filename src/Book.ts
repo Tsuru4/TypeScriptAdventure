@@ -74,6 +74,12 @@ export class Book
     //This method should be complete. It just needs implimentation and testing.
     public setNextUnassignedDictionaryKey(newValue:string)
     {
+        if (newValue.includes("[")||newValue.includes("]"))
+        {
+            console.error(`"[" and "]" are not allowed in dictionary names. They will confuse the logic of the code. String ${newValue} is rejected.`)
+            //Although this is an error, it is easier to simply return while ignoring the user input than it would be to throw in this case. 
+            return;
+        }
         console.log("Setting new key value " + newValue);
         if (this.foundNewKey == false)
         {

@@ -50,6 +50,11 @@ export class Book {
     //receives a value for the next missing key. Throw an error if there are no missing keys.
     //This method should be complete. It just needs implimentation and testing.
     setNextUnassignedDictionaryKey(newValue) {
+        if (newValue.includes("[") || newValue.includes("]")) {
+            console.error(`"[" and "]" are not allowed in dictionary names. They will confuse the logic of the code. String ${newValue} is rejected.`);
+            //Although this is an error, it is easier to simply return while ignoring the user input than it would be to throw in this case. 
+            return;
+        }
         console.log("Setting new key value " + newValue);
         if (this.foundNewKey == false) {
             throw new Error("This function was called, when it was not needed. There are no more new keys in need of a new value.");

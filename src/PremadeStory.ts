@@ -60,7 +60,7 @@ function constructBookSparky():Book
         adventureBook.constructChapter(
             2, "path2Fire", 
             ["[Protagonist] skeptically chose fire. The book claims that fire is the most powerful element, coveted even by the gods. but when he tried to spar against his brothers, he was easily overpowered. Dumb book was all talk, but his father told him to stick with it.",
-                "After years of reluctant practice, he developed his own variation of the book's fire powers, lightning! This variation is much stronger. He can beat the younger of his two older brothers now, but his oldest brother is still the strongest.",
+                "After years of reluctant practice, he developed his own variation of the book's fire powers, lightning! This variation is much stronger. He can beat [Second Brother] now, but [Eldest Brother] is still the strongest.",
                 "[Protagonist] has a new problem now. He has tried to ignore the truth his entire childhood, but he can no longer ignore reality. His dad is a supervillain."],
             "What should he do?",
             [{label:"Fight",path:"path3Fight", iconSrc:iconSnowball}]
@@ -94,7 +94,7 @@ function constructBookSparky():Book
     {
         adventureBook.constructChapter(
             3, "path3Fight",
-            ["[Protagonist] fights desperately to stand up against his father's supervillain reign of terror. [Eldest Brother] and some of their friends join him. Using a laser pistol developed by one of his father's minions, [Protagonist] manages to hit his father's leg, but ultimately, both sides have superpower, and the other side has a lot more experience.",
+            ["[Protagonist] fights desperately to stand up against his father's supervillain reign of terror. [Eldest Brother] and some of their friends join him. Using a laser pistol developed by one of his father's minions, [Protagonist] manages to hit his father's leg, but ultimately, his father has superpowers and guns too. He also has a lot more experience than [Protagonist].",
                 "[Protagonist] lost this battle, and in a panic, he and his allies scatter and flee."],
             "Who will he go with?",
             [{label:"Friend",path:"path4Friend", iconSrc:iconWater},
@@ -105,7 +105,7 @@ function constructBookSparky():Book
 
         adventureBook.constructChapter(
             3, "badpath3Water",
-            ["[Protagonist] attempted to fight his father, but he lost badly. It wasn't even a contest. He was grounded for life."],
+            ["[Protagonist] attempts to fight his father, but he loses badly. It wasn't even a contest. He is now grounded for life."],
             "The end.",
             []
         );
@@ -151,8 +151,8 @@ function constructBookSparky():Book
         adventureBook.constructChapter(
             5, "path5Job",
             ["[Protagonist] tries looking for a job, but no one in [Enormous City] will hire him.",
-                "Somehow, he gets by for a couple weeks by eating scraps out of a dumptser. He isn't alone, though, as the alleys are crawling with homeless children by day and gangters by night.", 
-                "One day, a boy [Friend 2] discovers [Protagonist] and takes him to a food kitchen run by his mother.",
+                "Somehow, he gets by for a couple weeks by eating scraps out of a dumptser. He isn't alone, though, as the alleys are crawling with homeless children by day and gangsters by night.", 
+                "One day, a boy named [Friend 2] discovers [Protagonist] and takes him to a food kitchen run by his mother.",
                 "[Friend 2]'s mother gives him a part time job at the food kitchen."],
             "[Protagonist] has a lot of free time on his hands now. How will he spend it?",
             [{label:"Work Out", path:"path6TrainOcean", iconSrc:iconSnowball}]
