@@ -7,7 +7,7 @@ import { Chapter } from "./Chapter.js";
 export class Book {
     volumes = [new Map()];
     storyDictionary = new Map();
-    pathLog = [];
+    buttonLog = [];
     foundNewKey = false;
     constructor(totalVolumes) {
         if (totalVolumes <= 0) {
@@ -86,7 +86,7 @@ export class Book {
      * @returns All of the strings necessary to update the HTML page with the next part of the story.
      */
     updateChapter(userChosenPath) {
-        const upcomingVolumeIndex = this.pathLog.length;
+        const upcomingVolumeIndex = this.buttonLog.length;
         const upcomingVolume = this.volumes[upcomingVolumeIndex];
         this.refreshFoundNewKeys();
         console.log("Test 2" + this.foundNewKey);
@@ -99,13 +99,13 @@ export class Book {
         if (!upcomingVolume) {
             throw new Error(`No volume found for index ${upcomingVolumeIndex}`);
         }
-        const chapter = upcomingVolume.get(userChosenPath);
+        const chapter = upcomingVolume.get(userChosenPath.path);
         if (!chapter) {
-            throw new Error(`No chapter found for path ${userChosenPath} in volume index ${upcomingVolumeIndex}`);
+            throw new Error(`No chapter found for path ${userChosenPath.path} in volume index ${upcomingVolumeIndex}`);
         }
         const [story, question, buttons] = chapter.getAllContents();
         const heading = "Chapter " + (upcomingVolumeIndex + 1).toString();
-        this.pathLog.push(userChosenPath);
+        this.buttonLog.push(userChosenPath);
         this.refreshFoundNewKeys();
         return [heading, story, question, buttons];
     }
@@ -137,5 +137,38 @@ export class Book {
             throw new Error("Chapter not found.");
         }
         return chapter.getStoryStrings();
+    }
+    getStoryStrings() {
+        const storyStrings = [];
+        for (let i = 0; i < this.buttonLog.length; i++) {
+            const currentVolume = this.volumes[i];
+            if (!currentVolume) {
+                throw new Error(`Undefined volume ${currentVolume} at index ${i} of ${this.volumes}.`);
+            }
+            const currentButton = this.buttonLog[i];
+            if (!currentButton) {
+                throw new Error(`Undefined button ${currentButton} at index ${i} of ${this.buttonLog}.`);
+            }
+            const currentPath = currentButton.path;
+            const currentChapter = currentVolume.get(currentPath);
+            if (!currentChapter) {
+                throw new Error(`Undefined chapter ${currentChapter} for key ${currentPath} in volume ${currentVolume}.`);
+            }
+            for (const paragraph of currentChapter.getStoryStrings()) {
+                storyStrings.push(paragraph);
+            }
+            ;
+        }
+        return storyStrings;
+    }
+    getRecentIconSrc() {
+        if (this.buttonLog.length <= 1) {
+            return "";
+        }
+        const recentButton = this.buttonLog[this.buttonLog.length - 1];
+        if (recentButton) {
+            return recentButton.iconSrc;
+        }
+        throw new Error(`Button ${recentButton} at index ${this.buttonLog.length - 1} of array, ${this.buttonLog}, is not defined.`);
     }
 }

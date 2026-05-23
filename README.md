@@ -62,7 +62,7 @@ Libraries:
 - [ ] Complete story.
 - [ ] Address edge cases.
 - [ ] Polish CSS.
-- [ ] Add functions to support pictures.
+- [x] Add functions to support pictures.
 - [ ] Add functions to animate a character avatar (I might not actually get to this).
 - [ ] Remove unnessecary files relating to React from repository.
 

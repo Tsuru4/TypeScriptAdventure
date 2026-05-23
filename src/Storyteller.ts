@@ -1,4 +1,5 @@
 import constructBook from "./PremadeStory.js";
+import type {button} from "./Button.js";
 
 //Chapter construction was moved to its own file for the sake of abstraction.
 //Storyteller's role should focus soley on communication between the book and the HTML.
@@ -25,7 +26,7 @@ function createAndAppendDiv(divId:string): HTMLDivElement
     return temporaryDiv;
 }
 
-createAndAppendDiv("longartbox");
+const topArtBox = createAndAppendDiv("longartbox");
 const storyBox = createAndAppendDiv("storybox");
 const inputBox = createAndAppendDiv("inputbox");
 const questionBox = createAndAppendDiv("questionbox");
@@ -34,34 +35,6 @@ const artGrid = createAndAppendDiv("artgrid");
 
 buttonGrid.className = "boxofboxes";
 artGrid.className = "boxofboxes";
-
-//Below is for testing purposes only. The actual images will be set up more dynamically.
-/*
-const trueArtBox = document.createElement("div");
-trueArtBox.className = "buttonsubbox";
-artGrid.append(trueArtBox);
-
-const artBox = document.createElement("img");
-artBox.src = "images/Potion2.png"
-trueArtBox.appendChild(artBox);
-
-const artBox2 = document.createElement("img");
-artBox2.src = "images/Snowball2.png"
-artBox2.className = "buttonsubbox";
-artGrid.appendChild(artBox2);
-
-const artBox3 = document.createElement("img");
-artBox3.src = "images/Potion.png"
-artBox3.className = "buttonsubbox";
-artGrid.appendChild(artBox3);
-
-const artBox4 = document.createElement("img");
-artBox4.src = "images/cloud.png"
-artBox4.className = "buttonsubbox";
-artGrid.appendChild(artBox4);
-*/
-//Note, artBox will eventually contain a grid of images equal to the number of buttonBoxes. However, these images will not be implemented until very late in the project.
-
 
 /**
  * 
@@ -111,6 +84,72 @@ function updateInputField()
 }
 
 /**
+ * A helper function to UpdateHTMLChapter
+ * Adds information from button to the HTML.
+ * @param nextButton 
+ */
+function printStoryBranchButton(nextButton:button)
+{
+    const currentSubBox = document.createElement("div");
+    currentSubBox.className = "buttonsubbox";
+    buttonGrid.appendChild(currentSubBox);
+
+    const buttonElement = document.createElement("button");
+    buttonElement.textContent = nextButton.label;
+    buttonElement.addEventListener("click", () => 
+        {updateHTMLChapter(nextButton);
+    });
+    currentSubBox.appendChild(buttonElement);
+
+    const currentArtBox = document.createElement("div");
+    currentArtBox.className = "buttonsubbox";
+    artGrid.appendChild(currentArtBox);
+
+    const currentIcon = document.createElement("img");
+    currentIcon.src = nextButton.iconSrc;
+    currentArtBox.appendChild(currentIcon);
+}
+
+/**
+ * A helper function to UpdateHTMLChapter
+ * Adds information from story to the storybox HTML.
+ * @param paragraph 
+ */
+function printStaggeredParagraphs(headingString:string, paragraphs:string[])
+{
+    const chapterHeading = document.createElement("h1");
+    chapterHeading.textContent = headingString;
+    storyBox.appendChild(chapterHeading);
+//TODO figure out how to implement a timer so that paragraphs are staggered one second apart.
+    paragraphs.forEach(paragraph => {
+        const p = document.createElement("p");
+        p.textContent = paragraph;
+        storyBox.appendChild(p);
+    });
+}
+
+function updateTopArt()
+{
+    const currentIcon = document.createElement("img");
+    currentIcon.src = adventureBook.getRecentIconSrc();
+    topArtBox.appendChild(currentIcon);
+}
+
+function displayFullStory()
+{
+    storyBox.innerHTML = "";
+    questionBox.innerHTML = "";
+    
+    const fullStory = adventureBook.getStoryStrings();
+
+    fullStory.forEach(paragraph => {
+        const p = document.createElement("p");
+        p.textContent = paragraph;
+        storyBox.appendChild(p);
+    });
+}
+
+/**
  * The core function of Storyteller.
  * This function is called each time that the buttons at the bottom of the page are clicked. 
  * It tries to recieve the text for the next Chapter of the Book. 
@@ -121,27 +160,20 @@ function updateInputField()
  * 
  * @param nextPath The value of path. It should match one of the next paths in Book.
  */
-function updateHTMLChapter(nextPath:string)
+function updateHTMLChapter(nextButton:button)
 {
 
     try {
-        const [headingString, storyStrings, questionString, buttonArray] = adventureBook.updateChapter(nextPath);
-    
-    
+        const [headingString, storyStrings, questionString, buttonArray] = adventureBook.updateChapter(nextButton);        
+
         storyBox.innerHTML = "";
         questionBox.innerHTML = "";
         buttonGrid.innerHTML = "";
         artGrid.innerHTML = "";
 
-        const chapterHeading = document.createElement("h1");
-        chapterHeading.textContent = headingString;
-        storyBox.appendChild(chapterHeading);
+        updateTopArt();
 
-        storyStrings.forEach(paragraph => {
-            const p = document.createElement("p");
-            p.textContent = paragraph;
-            storyBox.appendChild(p);
-        });
+        printStaggeredParagraphs(headingString,storyStrings);
 
         //Sets up prompts for user to set up new names for dictionary terms.
         console.log(!adventureBook.isReadyToUpdateChapter())
@@ -153,25 +185,22 @@ function updateHTMLChapter(nextPath:string)
         questionBox.textContent += questionString;
 
         buttonArray.forEach(button => {
+            printStoryBranchButton(button);
+        });
+
+        if (buttonArray.length == 0)
+        {
             const currentSubBox = document.createElement("div");
             currentSubBox.className = "buttonsubbox";
             buttonGrid.appendChild(currentSubBox);
 
             const buttonElement = document.createElement("button");
-            buttonElement.textContent = button.label;
+            buttonElement.textContent = "Playback Full Story";
             buttonElement.addEventListener("click", () => 
-                {updateHTMLChapter(button.path);
+                {displayFullStory();
             });
             currentSubBox.appendChild(buttonElement);
-
-            const currentArtBox = document.createElement("div");
-            currentArtBox.className = "buttonsubbox";
-            artGrid.appendChild(currentArtBox);
-
-            const currentIcon = document.createElement("img");
-            currentIcon.src = button.iconSrc;
-            currentArtBox.appendChild(currentIcon);
-        });
+        }
 
         const gridBoxes = document.getElementsByClassName("boxofboxes");
         for (let i = 0; i < gridBoxes.length; i++)
@@ -204,4 +233,4 @@ function updateHTMLChapter(nextPath:string)
 }
 
 //This call acts as the "first domino".
-updateHTMLChapter("path1");
+updateHTMLChapter({label:"",path:"path1",iconSrc:"Potion.png"});

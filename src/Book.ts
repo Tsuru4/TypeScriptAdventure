@@ -11,7 +11,7 @@ export class Book
 
     private volumes: Map<string,Chapter>[] = [new Map<string,Chapter>()];
     private storyDictionary: Map<string,string> = new Map<string,string>();
-    private pathLog: string[] = [];
+    private buttonLog: button[] = [];
     private foundNewKey: boolean = false;
 
     constructor(totalVolumes:number)
@@ -115,9 +115,9 @@ export class Book
      * @param userChosenPath The key to the chapter the user selected.
      * @returns All of the strings necessary to update the HTML page with the next part of the story. 
      */
-    public updateChapter(userChosenPath:string): [string, string[], string, button[]]
+    public updateChapter(userChosenPath:button): [string, string[], string, button[]]
     {
-        const upcomingVolumeIndex = this.pathLog.length;
+        const upcomingVolumeIndex = this.buttonLog.length;
         const upcomingVolume = this.volumes[upcomingVolumeIndex];
         
         this.refreshFoundNewKeys();
@@ -133,14 +133,14 @@ export class Book
         if (!upcomingVolume) {
             throw new Error(`No volume found for index ${upcomingVolumeIndex}`);
         }
-        const chapter = upcomingVolume.get(userChosenPath);
+        const chapter = upcomingVolume.get(userChosenPath.path);
         
         if (!chapter) {
-            throw new Error(`No chapter found for path ${userChosenPath} in volume index ${upcomingVolumeIndex}`);
+            throw new Error(`No chapter found for path ${userChosenPath.path} in volume index ${upcomingVolumeIndex}`);
         }
         const [story,question,buttons] = chapter.getAllContents();
         const heading = "Chapter " + (upcomingVolumeIndex+1).toString();
-        this.pathLog.push(userChosenPath);
+        this.buttonLog.push(userChosenPath);
         this.refreshFoundNewKeys();
         return [heading, story, question, buttons];
     }
@@ -182,6 +182,49 @@ export class Book
             throw new Error("Chapter not found.");
         }
         return chapter.getStoryStrings()
+    }
+
+    public getStoryStrings():string[]
+    {
+        const storyStrings:string[] = [];
+        for (let i = 0; i < this.buttonLog.length; i++)
+        {
+            const currentVolume = this.volumes[i];
+            if (!currentVolume)
+            {
+                throw new Error(`Undefined volume ${currentVolume} at index ${i} of ${this.volumes}.`);
+            }
+            const currentButton = this.buttonLog[i];
+            if(!currentButton)
+            {
+                throw new Error(`Undefined button ${currentButton} at index ${i} of ${this.buttonLog}.`);
+            }
+            const currentPath = currentButton.path;
+            const currentChapter = currentVolume.get(currentPath);
+            if (!currentChapter)
+            {
+                throw new Error(`Undefined chapter ${currentChapter} for key ${currentPath} in volume ${currentVolume}.`)
+            }
+            for (const paragraph of currentChapter.getStoryStrings())
+                {
+                    storyStrings.push(paragraph);
+                };
+        }
+        return storyStrings;
+    }
+
+    public getRecentIconSrc():string
+    {
+        if (this.buttonLog.length <= 1)
+        {
+            return "";
+        }
+        const recentButton = this.buttonLog[this.buttonLog.length-1]
+        if (recentButton)
+        {
+            return recentButton.iconSrc;
+        }
+        throw new Error(`Button ${recentButton} at index ${this.buttonLog.length-1} of array, ${this.buttonLog}, is not defined.`);
     }
 
 }

@@ -7,10 +7,11 @@ function constructBookSparky() {
     const adventureBook = new Book(18);
     console.log(adventureBook);
     const snowball = "images/Snowball2.png";
+    const cloud = "images/cloud.png";
     //Volume 1
     {
         adventureBook.constructChapter(1, "path1", ["This is the story of [Protagonist] [Surname], a brave young boy with superpowers.",
-            "One day, [Protagonist]'s father pulls him and his two older brothers, [Eldest Brother] and [Second Brother], aside and brings him to the family's secret library. He shows them four books, each with hidden techniques on superpowers."], "Which book will [Protagonist] choose?", [{ label: "Fire", path: "path2Fire", iconSrc: snowball }, { label: "Water", path: "path2Water", iconSrc: snowball }, { label: "Air", path: "path2Air", iconSrc: snowball }, { label: "Earth", path: "path2Earth", iconSrc: snowball }]);
+            "One day, [Protagonist]'s father pulls him and his two older brothers, [Eldest Brother] and [Second Brother], aside and brings him to the family's secret library. He shows them four books, each with hidden techniques on superpowers."], "Which book will [Protagonist] choose?", [{ label: "Fire", path: "path2Fire", iconSrc: snowball }, { label: "Water", path: "path2Water", iconSrc: snowball }, { label: "Air", path: "path2Air", iconSrc: cloud }, { label: "Earth", path: "path2Earth", iconSrc: snowball }]);
     }
     //Volume 2
     {
@@ -68,7 +69,7 @@ function constructBookSparky() {
     }
     //Volume 9
     {
-        adventureBook.constructChapter(9, "path9Hero", ["As an official superhero, he quickly makes a name for himself as [Alter Ego]. [Alter Ego] has lots of fans, and is especially popular with the ladies, many of whom for the [Alter Ego] fan club. His biggest fans are [Girl 2], [Girl 3], and [Girl 4]",
+        adventureBook.constructChapter(9, "path9Hero", ["As an official superhero, he quickly makes a name for himself as [Alter Ego]. [Alter Ego] has lots of fans, and is especially popular with the ladies, many of whom form the [Alter Ego] fan club. His biggest fans are [Girl 2], [Girl 3], and [Girl 4]",
             "[Girl 1] approaches [Protagonist] one day, and asks him on a date."], "What should he do?", [{ label: "Date", path: "path10Date", iconSrc: snowball }, { label: "Decline", path: "path10Reject", iconSrc: snowball }]);
     }
     //Volume 10

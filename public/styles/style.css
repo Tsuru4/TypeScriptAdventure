@@ -1,3 +1,6 @@
+#StorytellerContent {
+    font-family: monospace;
+}
 
 #longartbox {
     background-color: black;
@@ -6,7 +9,13 @@
 
 #storybox {
     background-color: burlywood;
+    font-family: fantasy, sans-serif, monospace;
 }
+
+#storybox h1{
+    text-align: center;
+}
+
 
 #questionbox {
     background-color: lightblue;
