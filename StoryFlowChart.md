@@ -1,3 +1,4 @@
+Note, this flowchart does not reflect hidden conditions to reach certain paths.
 ```mermaid
 flowchart
     path1((Start))
@@ -24,13 +25,15 @@ flowchart
 
     path7Rescue --> path8Fight[Fight]
     path7Rescue --> path8Run((Run: Bad End))
+    path7Rescue --> path8Feed[Feed: Hidden Path]
 
     path8Fight --> path9Hero[Hero]
+    path8Feed --> path9Hero
 
     path9Hero --> path10Date[Date]
     path9Hero --> path10Reject[Reject]
 
-    path10Reject --> unfinishedPath{Unfinished}
+    path10Reject --> path11Bribe
     path10Date --> path11Bribe[Bribe]
 
     path11Bribe --> path12Rescue[Rescue]
@@ -39,6 +42,12 @@ flowchart
 
     path12Rescue[Rescue] --> path13Sidekick[Sidekick]
     path12Rescue --> path13Reject{Unfinished}
+    path12Rescue --> path13TreatVillain{Unfinished}
+    path12Rescue --> path13TreatHero{Unfinished}
+    path12Rescue --> path13TreatAnti{Unfinished}
+    path12Rescue --> path13TreatScientist{Unfinished}
+    path12Rescue --> path13TreatGirl{Unfinished}
+
 
     path13Sidekick --> path14Loyalty
     path13Sidekick --> path14Girl3{Unfinished}

@@ -27,18 +27,40 @@ export class Book
         }
     }
 
+    /**
+     * Sets up a premade dictionary. This is a quality of life feature intended to give the reader an option to skip filling out all remaining values in the premade dictionary.
+     * It is suggested that the premadeDictionary contains a matching [key,value] pair for every key asscociated with storyDictionary, though that is not required.
+     * @method usePremadeDictionary must be called after this method for premadeDictionary to actually be implemented. This method merely sets the stage so that the reader may have that option. 
+     * @param premadeDictionary
+     */
     public setPremadeDictionary(premadeDictionary:Map<string,string>)
     {
         this.premadeDictionary = premadeDictionary;
     }
 
+    /**
+     * Assigns all [key,value] pairs of premadeDictionay to storyDictionary.
+     * Skips all instances where the storyDictionary already has a value for that key.
+     */
     public usePremadeDictionary()
     {
         for (const [key,value] of this.premadeDictionary)
         {
-            if ((!this.storyDictionary.has(key))||(this.storyDictionary.get(key)==""))
+            if (value == undefined)
             {
-                this.storyDictionary.set(key,value);
+                console.error(`Value for ${key} in premadeDictionary is undefined. ${this.premadeDictionary}`);
+            }
+            else
+            {
+                if ((!this.storyDictionary.has(key))||(this.storyDictionary.get(key)==""))
+                {
+                    this.storyDictionary.set(key,value);
+                }
+                if (this.storyDictionary.get(key) == undefined)
+                {
+                    console.error(`Unexpected error. ${key} was undefined in storydictionary ${this.storyDictionary}. This does not stop the current method from completing its task, but this does imply some other part of the code is broken.`);
+                    this.storyDictionary.set(key,value);
+                }
             }
         }
     }
@@ -53,8 +75,9 @@ export class Book
         volume.set(path,chapter);
     }
 
-    //returns the name of the next key with a missing value. Return "" if there are no missing keys.
-    //This function should be complete. It just needs implementation and testing.
+    /**
+     * @returns the next key to storyDictionary with a missing value. Returns "" if there are no missing keys.
+    */
     public getNextUnassignedDictionaryKey():string
     {
         if (this.foundNewKey == true)
@@ -70,8 +93,11 @@ export class Book
         return "";
     }
 
-    //receives a value for the next missing key. Throw an error if there are no missing keys.
-    //This method should be complete. It just needs implimentation and testing.
+    /**
+     * Receives a value for the next missing key. Throw an error if there are no missing keys.
+     * @method getNextUnassignedDictionaryKey() Call this method first to know which key is the next missing key. 
+     * @param newValue The new value for the next missing key.
+     */
     public setNextUnassignedDictionaryKey(newValue:string)
     {
         if (newValue.includes("[")||newValue.includes("]"))
@@ -123,9 +149,90 @@ export class Book
         {
             throw new Error(`Volume index out of range. Volume ${volumeIndex} is not between 1 and ${this.volumes.length}. Chapter rejected.`)
         }
+        if (volumeIndex.toString() != path.charAt(4) && volumeIndex.toString() != path.substring(4,6))
+        {
+            console.error(`Warning. Detected that the number in ${path} is not equivalant to volume index ${volumeIndex}. Either the number of chapters is in the triple digits, or the path number does not conform to convention. If the cause is the later, then unexpected behavior will occur later in this program.`)
+        }
         const chapter = new Chapter(this.storyDictionary, storyBox, questionBox, buttonBox);
         this.setChapterInVolume(volumeIndex, path, chapter);
         return chapter;
+    }
+
+    /**
+     * Not all buttons are intended to be relayed to the client program as they are. This helper method returns a new and revised list of how the buttons should be returned.
+     * @returns New list of modified buttons.
+     */
+    private filterButtons(prefilteredButtons:button[]):button[]
+    {
+        const filteredButtons:button[] = [];
+        //! I already hate this method. I haven't even finished, and it already has 2 On^3 operations!
+        for (const currentButton of prefilteredButtons)
+        {
+            if (this.buttonIsVisible(currentButton))
+            {
+                filteredButtons.push(currentButton);
+            }
+        }
+        for (const currentButton of filteredButtons)
+        {
+            if (!this.buttonIsClearable(currentButton))
+            {
+                if (currentButton.badPath)
+                {
+                    currentButton.path = currentButton.badPath;
+                }
+                else
+                {
+                    console.error(`Server semantic error suspected at story setup. Button ${currentButton} is set as not clearable by the main path, but badPath is missing. Path reassignment will be skipped for this button. Continuing with main path even though path is not clearable. Setting a clear condition for a button is meaningless if there is no badPath to default to when the condition fails.`);
+                }
+            }
+        }
+        return filteredButtons;
+    }
+
+    //TODO this method has the same On^3 issue as buttonIsVisible(). And again, the final for loop is unnessecary if the pathlog was numbered correctly.
+    private buttonIsClearable(currentButton:button):boolean
+    {
+        if (!currentButton.clearConditions)
+        {
+            return true;
+        }
+        for (const currentCondition of currentButton.clearConditions)
+        {
+            for (const loggedButton of this.buttonLog)
+            {
+                if (currentCondition == loggedButton.path)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    //TODO fix the complexity of this method. Its currently using On^3 steps. (It has two nested for loops inside it, and is being called from inside yet another for loop.) 
+    private buttonIsVisible(currentButton:button):boolean
+    {
+        if (currentButton.hideConditions)
+        {
+            for (const currentCondition of currentButton.hideConditions)
+            {
+                //* In theory, I should not need to check every single button in the log.
+                // If the person who constructed the chapters followed my convention of "path#string", 
+                //  then only pathlog[#-1] should contain the condition being sought here.
+                // That's a big if though. But if I did narrow this down, the complexity would drop from On^3 to On^2.
+                // Not to mention of the three for loops, this one will usually be the longest,
+                //  as buttonLog can reach as high as 18 places in my use case, and could be even longer for other users.
+                for (const loggedButton of this.buttonLog)
+                {
+                    if (currentCondition == loggedButton.path)
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     //? AI seems to be predicting my code as I write. This is weird. I thought I had turned this feature off a few months ago.
@@ -161,11 +268,12 @@ export class Book
         if (!chapter) {
             throw new Error(`No chapter found for path ${userChosenPath.path} in volume index ${upcomingVolumeIndex}`);
         }
-        const [story,question,buttons] = chapter.getAllContents();
+        const [story,question,prefilteredButtons] = chapter.getAllContents();
         const heading = "Chapter " + (upcomingVolumeIndex+1).toString();
         this.buttonLog.push(userChosenPath);
         this.refreshFoundNewKeys();
-        return [heading, story, question, buttons];
+        const filteredButtons = this.filterButtons(prefilteredButtons);
+        return [heading, story, question, filteredButtons];
     }
 
     /**
@@ -207,6 +315,11 @@ export class Book
         return chapter.getStoryStrings()
     }
 
+    //TODO At the moment, this function does not separate the strings by chapter in any way. 
+    /**
+     * A recap with all story contents. Omits buttons and questions.
+     * @returns An array with all story strings from all selected chapters.
+     */
     public getStoryStrings():string[]
     {
         const storyStrings:string[] = [];
@@ -236,16 +349,24 @@ export class Book
         return storyStrings;
     }
 
+    /**
+     * 
+     * @returns File path for the icon of the most recently pressed button. Returns "unknown.png" if button has no icon.
+     */
     public getRecentIconSrc():string
     {
-        if (this.buttonLog.length <= 1)
+        if (this.buttonLog.length < 1)
         {
-            return "";
+            throw new Error("This method has been called too early. Button log has no buttons.");
         }
         const recentButton = this.buttonLog[this.buttonLog.length-1]
         if (recentButton)
         {
-            return recentButton.iconSrc;
+            if (recentButton.iconSrc)
+                {
+                    return recentButton.iconSrc;
+                }
+            return "undefined.png";
         }
         throw new Error(`Button ${recentButton} at index ${this.buttonLog.length-1} of array, ${this.buttonLog}, is not defined.`);
     }

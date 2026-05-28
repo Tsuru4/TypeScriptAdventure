@@ -29,7 +29,7 @@ export class Chapter
         this.buttonBox = this.shuffleList(buttonBox);
     }
 
-//! Not yet tested
+    //! Still needs some testing.
     /**
      * This function sets up values in preparation to override the book dictionary.
      * @param key 
@@ -42,7 +42,7 @@ export class Chapter
 
     /**
      * Overrides the story dictionary.
-     * Does not override if the term is not in the dictionary (This loophole leaves room for the user to still be able to customize the name if desired).
+     * Does not override if the term is not in the dictionary (This loophole is designed to leave room for the user to still be able to customize the name if is just now being presented).
      */
     public triggerOverrideDictionary()
     {

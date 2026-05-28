@@ -56,8 +56,11 @@ erDiagram
 
     Button{
         string label
-        string path
+        pathString path
         iconString iconSrc
+        pathString badpath
+        pathString[] hideConditions
+        pathString[] clearConditions
     }
 
 

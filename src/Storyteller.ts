@@ -108,13 +108,17 @@ function printStoryBranchButton(nextButton:button)
     });
     currentSubBox.appendChild(buttonElement);
 
+    //Note that filling although appending an image to currentArtBox is optional, the box itself should exist regardless to keep the grid organized.
     const currentArtBox = document.createElement("div");
     currentArtBox.className = "buttonsubbox";
     artGrid.appendChild(currentArtBox);
 
-    const currentIcon = document.createElement("img");
-    currentIcon.src = nextButton.iconSrc;
-    currentArtBox.appendChild(currentIcon);
+    if (nextButton.iconSrc)
+    {
+        const currentIcon = document.createElement("img");
+        currentIcon.src = nextButton.iconSrc;
+        currentArtBox.appendChild(currentIcon);
+    }
 }
 
 /**
