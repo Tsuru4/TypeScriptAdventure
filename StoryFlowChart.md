@@ -61,12 +61,12 @@ flowchart
     path15Self --> path16Hero[Own Way]
     path15Self --> path16Cooperate{Brother's way}
 
-    path16Hero --> path17Portal{Portal:Unfinished}
+    path16Hero --> path17Portal[Portal]
     path16Hero --> path17Leader[Leader]
 
-    path17Portal --> path18Reopen{Unfinished}
-    path17Portal --> path18Run{Unfinished}
-    path17Portal --> path18Close{Unfinished}
+    path17Portal --> path18Reopen((Good Ending 3))
+    path17Portal --> path18Run((Tragic Ending 1))
+    path17Portal --> path18Close((Good Ending 4))
     path17Leader --> path18Victory((Good Ending 1))
-    path17Leader --> path18Mercy(Good Ending 2:Unfinished)
+    path17Leader --> path18Mercy((Good Ending 2))
 ```

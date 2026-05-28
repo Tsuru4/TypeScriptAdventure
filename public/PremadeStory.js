@@ -18,9 +18,9 @@ function constructBookSparky() {
         premadeDictionary.set("[Surname]", "Yggdrasil");
         premadeDictionary.set("[Eldest Brother]", "Pluton");
         premadeDictionary.set("[Second Brother]", "Neptune");
-        premadeDictionary.set("[Friend 1]", "Alfred");
+        premadeDictionary.set("[Boy 1]", "Alfred");
         premadeDictionary.set("[Enormous City]", "Mnemosyne City");
-        premadeDictionary.set("[Friend 2]", "Dawei");
+        premadeDictionary.set("[Boy 2]", "Dawei");
         premadeDictionary.set("[King]", "Jonathan");
         premadeDictionary.set("[Girl 1]", "Juni");
         premadeDictionary.set("[Animal Girl]", "Nami");
@@ -38,6 +38,17 @@ function constructBookSparky() {
         premadeDictionary.set("[Angel Doctor]", "Doctor Feathervale");
         premadeDictionary.set("[Raven Angel]", "Fina");
         premadeDictionary.set("[Healing Hero]", "Moonlight");
+        premadeDictionary.set("[Copycat]", "Eclipse");
+        premadeDictionary.set("[Phantom Thief]", "Duckling");
+        premadeDictionary.set("[Superhero Team]", "Starlight");
+        premadeDictionary.set("[Light Villain]", "Anni");
+        premadeDictionary.set("[Flying Girl]", "Sora");
+        premadeDictionary.set("[Esper]", "Zoey");
+        premadeDictionary.set("[Angry Gang]", "Dark Valkryie");
+        premadeDictionary.set("[Earth Girl]", "Violet");
+        premadeDictionary.set("[Water Girl]", "Blue");
+        premadeDictionary.set("[Fire Girl]", "Red");
+        premadeDictionary.set("[Air Girl]", "Green");
     }
     adventureBook.setPremadeDictionary(premadeDictionary);
     //Volume 1
@@ -81,7 +92,7 @@ function constructBookSparky() {
         const question4 = "How will [Protagonist] eat tonight?";
         const button4Job = { label: "Find Job", path: "path5Job", iconSrc: iconSnowball };
         const button4Steal = { label: "Steal Food", path: "path5Steal", iconSrc: iconSnowball };
-        adventureBook.constructChapter(4, "path4Friend", ["[Protagonist] follows a friend, [Friend 1], west. Together, they cross the sea. Just as they are about to reach land, however, a sea monster attacks them, and he is separated from [Friend 1].",
+        adventureBook.constructChapter(4, "path4Friend", ["[Protagonist] follows a friend, [Boy 1], west. Together, they cross the sea. Just as they are about to reach land, however, a sea monster attacks them, and he is separated from [Boy 1].",
             "After an epic battle against the sea monster, he eventually escapes its grasp and swims the rest of the way to the shore. He reaches a large city by the coast and starts to wander the streets. [Enormous City] is even bigger than his home city, but not very friendly. [Protagonist] has no food, and now he is starving."], question4, [button4Job]);
         adventureBook.constructChapter(4, "path4Brother", ["He follows [Eldest Brother] to the southeast. But as they flee, their father and [Second Brother] pursue them.",
             "[Eldest Brother] scowls. \"Why'd you follow me?! If we had split up, at least one of us could have gotten away!\"",
@@ -94,18 +105,18 @@ function constructBookSparky() {
     }
     //Volume 5
     {
-        const button5TrainOcean = { label: "Work Out", path: "path6TrainOcean", iconSrc: iconSnowball };
-        const button5TrainDessert = { label: "Work Out", path: "path6TrainDesert", iconSrc: iconSnowball };
+        const button5TrainOcean = { label: "Work Out", path: "path6TrainOcean", iconSrc: iconWater };
+        const button5TrainDessert = { label: "Work Out", path: "path6TrainDesert", iconSrc: iconAir };
         adventureBook.constructChapter(5, "path5Job", ["[Protagonist] tries looking for a job, but no one in [Enormous City] will hire him.",
             "Somehow, he survives for a couple weeks by eating scraps out of a dumptser. He isn't alone, though. The alleys are crawling with homeless children by day and gangsters by night.",
-            "One day, a boy named [Friend 2] discovers [Protagonist] and takes him to a food kitchen run by his mother.",
-            "[Friend 2]'s mother gives him a part time job at the food kitchen."], "[Protagonist] has a lot of free time on his hands now. How will he spend it?", [button5TrainOcean]);
+            "One day, a boy named [Boy 2] discovers [Protagonist] and takes him to a food kitchen run by his mother.",
+            "[Boy 2]'s mother gives him a part time job at the food kitchen."], "[Protagonist] has a lot of free time on his hands now. How will he spend it?", [button5TrainOcean]);
         adventureBook.constructChapter(5, "path5Steal", ["[Protagonist] turns to thievery to get by. He feels guilty at first, but he slowly grows numb to it. His priority is to survive. He would look for honest work, but the locals already hate him."], "[Protagonist] has some free time on his hands now. How will he spend it?", [button5TrainDessert]);
     }
     //Volume 6
     {
         const commonStoryString6a = "A few years of diligent training pass in the blink of an eye, and now he is fourteen. He is very powerful, and now he wins most of his fights. He has become stronger just in time too; all is not well in the world around him.";
-        const commonStoryString6b = "Just when all hope is lost, [Friend 1] arrives with reinforcements! The three boys take down [Protagonist]'s father and his minions. However, this doesn't solve everything.";
+        const commonStoryString6b = "Just when all hope is lost, [Boy 1] arrives with reinforcements! The three boys take down [Protagonist]'s father and his minions. However, this doesn't solve everything.";
         const question6 = "Will he help the girl?";
         const button6Rescue = { label: "Obviously", path: "path7Rescue", iconSrc: iconSnowball };
         adventureBook.constructChapter(6, "path6TrainOcean", ["Although he is now hundreds of miles away from home, [Protagonist] still remembers his defeat at the hands of his father. In his free time, he anxiously practices his superpowers. And at night, when no one is watching, he prowls the streets and gets in fist fights with the local gang members.",
@@ -126,7 +137,7 @@ function constructBookSparky() {
     }
     //Volume 7
     {
-        const button7Fight = { label: "Fight Back", path: "path8Fight", iconSrc: iconSnowball };
+        const button7Fight = { label: "Fight Back", path: "path8Fight", iconSrc: iconAir };
         const button7Run = { label: "Run Away", path: "path8Run", iconSrc: iconSnowball };
         const button7Feed = { label: "Feed", path: "path8Feed", iconSrc: iconEarth, hideConditions: ["path4Brother", "path4Home", "path4Solo"] };
         adventureBook.constructChapter(7, "path7Rescue", ["He saved the girl with ease! She is impressed by his act of heroism. And she isn't the only one who is impressed; [Protagonist] is smitten as he gets a closer look and realizes how beautiful she is. She says her name is [Girl 1]. In the near future, she wishes to repay him. [Protagonist] likes how this turned out. It feels good to be thanked.",
@@ -141,21 +152,21 @@ function constructBookSparky() {
             "This popularity doesn't come without earning some grudges, though. The newly elected mayor, [New Mayor], hates him, and says that people don't need vigilantes when the police force is perfectly capable of protecting the people."], "What should [Protagonist] do?", [button8Hero]);
         adventureBook.constructChapter(8, "path8Run", ["[Protagonist] runs away in fear. Angry girls are even scarier than his dad."], "The end.", []);
         adventureBook.constructChapter(8, "path8Feed", ["[Protagonist] gets a sense of deja vu. He reaches into his backpack and offers up all of his snacks. The girl stops short and sniffs the back like a little animal. Her face breaks into a grin. She eats snacks happily. Apparently she was just hangry.",
-            "Suddenly, [Protagonist] remembers. Her name is [Animal Girl], and she's a close friend of [Friend 1], as well as a fellow superhuman. He starts to ask her if she has seen [Friend 1], but the rioters have recovered from their shock. They start to chase after her again. With a smirk, [Animal Girl] suddenly transforms into an eagle and flies off dramatically.",
+            "Suddenly, [Protagonist] remembers. Her name is [Animal Girl], and she's a close friend of [Boy 1], as well as a fellow superhuman. He starts to ask her if she has seen [Boy 1], but the rioters have recovered from their shock. They start to chase after her again. With a smirk, [Animal Girl] suddenly transforms into an eagle and flies off dramatically.",
             "By the end of the day, everyone in [Enormous City] begins to hail [Protagonist] as the hero who managed to \"tame the young supervillain\". He decides it's too much work to correct the slight misunderstanding. Anyways, he's quite popular now!",
             "This popularity doesn't come without earning some grudges, though. The newly elected mayor, [New Mayor], hates him, and says that people don't need vigilantes when the police force is perfectly capable of protecting the people. Once again, [Protagonist] feels an odd sense of deja vu."], "What should [Protagonist] do?", [button8Hero]);
     }
     //Volume 9
     {
-        const button9Date = { label: "Date", path: "path10Date", iconSrc: iconSnowball };
-        const button9Reject = { label: "Decline", path: "path10Reject", iconSrc: iconSnowball };
-        adventureBook.constructChapter(9, "path9Hero", ["As an official superhero, he quickly makes a name for himself as [Alter Ego]. [Alter Ego] has lots of fans, and is especially popular with the ladies, many of whom form the [Alter Ego] fan club. His biggest fans are [Girl 2], [Girl 3], and [Girl 4]",
+        const button9Date = { label: "Date", path: "path10Date", iconSrc: iconWater };
+        const button9Reject = { label: "Decline", path: "path10Reject", iconSrc: iconFire };
+        adventureBook.constructChapter(9, "path9Hero", ["As an official superhero, he quickly makes a name for himself as [Alter Ego]. [Alter Ego] has lots of fans, and is especially popular with the ladies, many of whom form the [Alter Ego] fan club. His biggest fans are [Girl 2], [Girl 3], and [Girl 4].",
             "[Girl 1] approaches [Protagonist] one day, and asks him on a date."], "What should he do?", [button9Date, button9Reject]);
     }
     //Volume 10
     {
         const button10Bribe = { label: "Cooperate", path: "path11Bribe", iconSrc: iconSnowball };
-        adventureBook.constructChapter(10, "path10Date", ["[Protagonist] takes [Girl 1] to [Resturaunt], a new resturaunt that [Friend 2] just started. [Friend 2] gives him a friend's discount.",
+        adventureBook.constructChapter(10, "path10Date", ["[Protagonist] takes [Girl 1] to [Resturaunt], a new resturaunt that [Boy 2] just started. [Boy 2] gives him a friend's discount.",
             "While on the date, [Girl 1] opens up about her backstory. She's actually a duchess. Or at least, she's a former duchess. Her uncle is [King], the former king. [Girl 1] is incredibly greatful that [Protagonist] saved her life that day.",
             "[Girl 1] knows about his secret identity, but now she wants to know about his past. He is hesitant to tell her about his supervillain father, but he tells her everything. She is alarmed at first, but she still sees him for who he is, not as his father's son.",
             "After the date, [Alter Ego] is approached by [Big Gang], the biggest mafia in [Enormous City]. Their leader, [Big Gang Leader], wants him to look the other way when he sees them commiting crimes. In exchange, they promise to tip him off on any other criminals they see and to fund his superhero activities. [Alter Ego] can refuse, of course, but they warn that he may not like what they do next."], "For some reason, it feels like there isn't really a choice. Should he accept the funding?", [button10Bribe]);
@@ -206,44 +217,59 @@ function constructBookSparky() {
         adventureBook.constructChapter(13, "path13TreatGirl", ["[Girl 1] still owes him a favor. [Alter Ego] hastily goes home, changes out of his superhero costume, and goes to her house as [Protagonist]. She isn't over being rejected yet, and she is visibly hurt when she sees he is cashing in the favor she owes him for another girl's sake. Nonetheless, [Girl 1] feels immense pity on hearing of [Girl 2]'s accident. She quickly calls in a favor with one of her cousin's friends, and a set of state of the art prosthetics are gifted to [Girl 2]. [Girl 2] feels conflicted about the charity, but vows to pay [Girl 1] back one day.",
             "Meanwhile, [Girl 2] asks [Alter Ego] out on a date.",
             "Later, [Girl 1] comes to [Protagonist]'s house in tears. She says she loves him, and begs him so reconsider his earlier rejection.",], "Who does he love most? (To be continued.)", []);
-        adventureBook.constructChapter(13, "path13TreatVillain", [" once mentioned a new supervillain in [Enormous City] whose only ability was healing. Her name was [Raven Angel], and she is often seen hanging around [Animal Girl]."], "To be continued.", []);
-        adventureBook.constructChapter(13, "path13TreatHero", ["One of the superheroes who was fighting [Big Gang] earlier can create an all purpose healing balm with a wave of her staff. Of course, there is a huge catch. She's one of the superheroes who caused this mess."], "To be continued.", []);
-        adventureBook.constructChapter(13, "path13TreatAnti", ["[Friend 2] once mentioned a very unpopular superhero whose main powers were flight and healing. The reason she is so unpopular is that she heals everyone, hero and villain, police and gangsters. Most of the city hates her and calls her the \"Naive Enabler\", though her proper superhero name is [Healing Hero]. But she is exactly the kind of openheareted and unbiased person who would be willing to heal [Girl 2]"], "TO be continued", []);
+        adventureBook.constructChapter(13, "path13TreatVillain", ["There is rumor of a new supervillain in [Enormous City] whose only ability is healing. Her name is [Raven Angel], and she is often seen hanging around [Animal Girl]."], "To be continued.", []);
+        adventureBook.constructChapter(13, "path13TreatHero", ["One of the superheroes who was fighting [Big Gang] earlier, [Water Hero], can create an all purpose healing balm with a wave of her staff. Of course, there is a huge catch. She's one of the superheroes who caused this mess."], "To be continued.", []);
+        adventureBook.constructChapter(13, "path13TreatAnti", ["[Boy 2] once mentioned a very unpopular superhero whose main powers were flight and healing. The reason she is so unpopular is that she heals everyone, hero and villain, police and gangsters. Most of the city hates her and calls her the \"Naive Enabler\", though her proper superhero name is [Healing Hero]. But she is exactly the kind of openheareted and unbiased person who would be willing to heal [Girl 2]"], "TO be continued", []);
     }
     //Volume 14
     {
+        const button14Self = { label: "Attend As Self", path: "path15Self", iconSrc: iconSnowball };
         adventureBook.constructChapter(14, "path14Loyalty", ["[Alter Ego] says he is happiest with [Sidekick]. This leads to an even bigger fight, and it takes a while before everyone is calmed down.",
             "One day, a world domination organization calling itself the [Surname] Syndicate sends a letter to [Protagonist]. [Protagonist] is alarmed. [Surname] Syndicate was the reason he had fought against his father a few years ago. It should have been disbanded after his father's defeat. The letter invites him to a secret meeting to \"discuss the future of the world\".",
-            "A second letter arrives as well, this one addressed to [Alter Ego]."], "Should he attend?", [{ label: "Attend As Self", path: "path15Self", iconSrc: iconSnowball }] //Other choices are to attend as a hero, or refuse.
+            "A second letter arrives as well, this one addressed to [Alter Ego]."], "Should he attend?", [button14Self] //Other potential choices are to attend as a hero, or refuse.
         );
     }
     //Volume 15
     {
-        adventureBook.constructChapter(15, "path15Self", ["He arrives as himself. At the meeting, he is greeted by several familiar faces, including [Eldest Brother], [Friend 1], and [Animal Girl].",
+        const button15Hero = { label: "Do It His Own Way", path: "path16Hero", iconSrc: iconSnowball };
+        adventureBook.constructChapter(15, "path15Self", ["He arrives as himself. At the meeting, he is greeted by several familiar faces, including [Eldest Brother], [Boy 1], and [Animal Girl].",
             "[Eldest Brother] reveals that he took over the [Surname] Syndicate after they defeated their father. He says that he did this because he discovered that an alien invasion was coming to earth. There are only a few more years left until the aliens arrive.",
-            "In order to save Earth, [Eldest Brother] believes the best way is to conquer it, then unify it so they can stand together against the aliens. [Protagonist] isn't sure what to think of this plan."], "How will he respond to this news?", [{ label: "Do It His Own Way", path: "path16Hero", iconSrc: iconSnowball }] //Alternatively, he can join them.
+            "In order to save Earth, [Eldest Brother] believes the best way is to conquer it, then unify it so they can stand together against the aliens. [Protagonist] isn't sure what to think of this plan."], "How will he respond to this news?", [button15Hero] //Alternatively, he could join them.
         );
     }
     //Volume 16
     {
+        const button16Portal = { label: "Close Portal", path: "path17Portal", iconSrc: iconAir };
+        const button16Leader = { label: "Fight Leader", path: "path17Leader", iconSrc: iconFire };
         adventureBook.constructChapter(16, "path16Hero", ["[Protagonist] decides to go back home and train harder. Together with [Girl 1], they brainstorm a better way to save Earth.",
-            "[Girl 1] tells her Uncle [King], and he spreads the warning to his connections.",
-            "[Eldest Brother] is irrate, but [Friend 1] and [Animal Girl] respect [Protagonist]'s decision and convince [Eldest Brother] to let [Protagonist] go.",
-            "After years of training, the day comes, just as [Eldest Brother] warned. A huge portal opens in the arctic, and an army of aliens pours out! The leader, [Invasion Leader], is exceptionally powerful."], "What will he do?", [{ label: "Close Portal", path: "path17Portal", iconSrc: iconSnowball }, { label: "Fight Leader", path: "path17Leader", iconSrc: iconSnowball }]);
+            "[Girl 1] tells her Uncle [King], and [King] spreads the warning to his connections.",
+            "[Eldest Brother] is irrate, but [Boy 1] and [Animal Girl] respect [Protagonist]'s decision and convince [Eldest Brother] to let [Protagonist] go.",
+            "[Protagonist] trains for fourteen years.",
+            "[Protagonist] and [Girl 1] have become very powerful. [Alter Ego] is now considered by many to be the strongest superhero in the world. They make many superhuman allies, such as [Healing Hero]. They also cross paths with again with the team of girls calling themselves [Superhero Team]. It's a girls only team, so [Alter Ego] is not invited. [Sidekick] doesn't like them because their leader, [Earth Girl], is always flirting with [Alter Ego]. She gets furious whenever [Alter Ego] flirts back.",
+            "[Baby] has grown too; now she's a teenager. She discovers she has her own superpowers, so she runs away from home and joins [Superhero Team]. She has a short fuse, but [Water Girl] is already used to [Fire Girl]'s short fuse at this point, so she takes [Baby] under her wing.",
+            "They encounter many strange enemies too. [Phantom Thief], for example, only steals books. But they are usually rare and priceless books, so the upperclass of [Enormous City] are always afraid of being targeted by him. Another villain, [Copycat], can mimic the abilities of nearly any superhero he faces. He seems to hate [Alter Ego] in particular for some reason.",
+            "In addition to [Big Gang], there is also [Angry Gang]. [Angry Gang] claims that all of the city's problems can mostly be attributed to five men: [Big Gang Leader], Mayor [New Mayor], [Alter Ego], [King], and [Eldest Brother] [Surname]. Only women have authority in this gang, and none of them seem to like [Alter Ego]. They respect [Sidekick], however, so they are willing to divert most of their rage against [Alter Ego] to the other four men.",
+            "Then there is [Animal Girl]. Most of [Surname] Syndicate is focused on conquering other parts of the world, but [Animal Girl] and [Boy 1] organize a branch of minions in [Enormous City] on [Eldest Brother]'s behalf. [Animal Girl] has a friend, [Light Villain], who is completely immune to all of [Alter Ego]'s powers and can shoot lasers from her fingernails. Together with [Flying Girl], [Esper], and [Raven Angel], these girls constantly wreck havoc through [Enormous City], trying to conquer it for the ever growing [Surname] Syndicate. Everyone hates these whimsical supervillainesses. The only bright side is, though they love picking fights with heroes and their rival villains alike, they seem keen on avoiding civilian casualties; they hold to an ideology that world domination is pointless if there are no surviving subjects.",
+            "Then, the day comes, just as [Eldest Brother] warned. A huge portal opens in the arctic, and an army of aliens pours out! All of the forces of Earth, heroes and villains alike, band together to fight off their common enemy. [Invasion Leader], king of the aliens, is exceptionally powerful."], "What will he do?", [button16Leader, button16Portal]);
     }
     //Volume 17
     {
+        const button17Victory = { label: "Proceed", path: "path18Victory", iconSrc: iconFire };
+        const button17Mercy = { label: "Retreat", path: "path18Mercy", iconSrc: iconWater };
+        const button17Reopen = { label: "Reopen Portal", path: "path18Reopen", iconSrc: iconFire };
+        const button17Run = { label: "Run", path: "path18Run", iconSrc: iconEarth };
+        const button17Close = { label: "Close Portal Again", path: "path18Close", iconSrc: iconAir };
         adventureBook.constructChapter(17, "path17Leader", ["[Invasion Leader] laughs at humanity's feeble efforts to stop him. With a wave of his hand, a ball of fire appears, and the arctic starts to melt under everyone's feet. The steam is so thick, the entire sky gets covered in clouds, blocking what little starlight remained.",
             "But [Protagonist] does not give up. He tackles the invader head on with bolt after bolt of lightning!",
-            "The battle rages for an unkkown amount of time. Eventually, the invader is exausted, and he retreats back through his portal."], "...", [{ label: "Proceed", path: "path18Victory", iconSrc: iconSnowball }, { label: "Retreat", path: "path18Mercy", iconSrc: iconSnowball }]);
-        adventureBook.constructChapter(17, "path17Portal", ["[Invasion Leader] looks around the artic perimeter. He sees humans everywhere, heroes and villains alike, all gathered together for a commmon cause; to defeat him. He smirks. \"Is this all you earthlings have? No matter where I go, all humans are the same. You cannot stop me!\" With a wave of his hand, he generates an enormous fireball, and prepares to toss it into the ice beneath the heroes' feet.",
+            "The battle rages for an unkkown amount of time. Eventually, the invader is exausted, and he retreats back through his portal."], "...", [button17Victory, button17Mercy]);
+        adventureBook.constructChapter(17, "path17Portal", ["[Invasion Leader] looks around the arctic perimeter. He sees humans everywhere, heroes and villains alike, all gathered together for a commmon cause; to defeat him. He smirks. \"Is this all you earthlings have? No matter where I go, all humans are the same. You cannot stop me!\" With a wave of his hand, he generates an enormous fireball, and prepares to toss it into the ice beneath the heroes' feet.",
             "Suddenly, a bolt of lightning bursts past his head. [Invasion Leader] glances at [Alter Ego] quizically. \"You missed, Earthling.\"",
             "But [Alter Ego] was never aiming at [Invasion Leader]; his lighting bolt hits the edge of the portal. Suddenly, there is a violent shaking, and the portal collapses! [Invasion Leader] pales. \"No, anything but that! Run!\" The fireball flickes and vanishes. All of the aliens tremble, drop their weapons, and run.",
-            "But before the people of Earth can cheer, they notice something is off. The aliens are running towards them, trying desperately to get past the perimeter. After a moment, it becomes clear why; the air where the portal was is now pulsing ominously. Breaking the portal by force has created an unstable spacetime rift. Everyone, human and alien alike, begins to flee."], "What will [Alter Ego] do? (To be continued)", [{ label: "Reopen Portal", path: "path18Reopen", iconSrc: iconSnowball }, { label: "Run", path: "path18Run", iconSrc: iconSnowball }, { label: "Close Portal Again", path: "path18Close", iconSrc: iconSnowball }]);
+            "But before the people of Earth can cheer, they notice something is off. The aliens are running towards them, trying desperately to get past the perimeter. After a moment, it becomes clear why; the air where the portal was is now pulsing ominously. Breaking the portal by force has created an unstable spacetime rift. Everyone, human and alien alike, begins to flee."], "What will [Alter Ego] do? (To be continued)", [button17Close, button17Reopen, button17Run]);
     }
     //Volume 18
     {
-        //Note, since these are the final chapters in the book, there must be no more buttons. Always return an empty array in place of buttons when at the final chapter of a book.
+        //Note, since these are the final chapters in this book, there must be no more buttons. Always return an empty array in place of buttons when at the final chapter of a book.
         adventureBook.constructChapter(18, "path18Victory", ["[Protagonist] starts to chase the enemy through the portal, but it collapses with him in it.",
             "[Protagonist] wakes up at home in [Enormous City]. [Girl 1] is with him.",
             "\"I thought you died! You were missing for weeks, and then you just suddenly reappeared out of thin air in your bed!\"",
@@ -251,12 +277,25 @@ function constructBookSparky() {
             "This is fine though. Earth is saved. [Protagonist] and [Girl 1] get married and live happily ever after."
         ], "The end! Congratulations!", []);
         adventureBook.constructChapter(18, "path18Mercy", ["[Alter Ego] lets [Invasion Leader] escape. He can feel himself reaching his limit. Quickly, he joins up with the other defenders of humanity and together they drive the remaining alien forces back through the portal.",
-            "Today was successful. The aliens have learned that as long as [Alter Ego] is there, the Earth is not so easily invaded. [Alter Ego] heaves a sigh of relief and collapses into the artic sea. The last thing he remembers is [Sidekick] rushing over to pull him out.",
+            "Today was successful. The aliens have learned that as long as [Alter Ego] is there, the Earth is not so easily invaded. [Alter Ego] heaves a sigh of relief and collapses into the arctic sea. The last thing he remembers is [Sidekick] rushing over to pull him out.",
             "[Protagonist] wakes up at home in [Enormous City]. [Girl 1] is with him.",
             "\"Don't push yourself so hard! You were asleep for two days!\"",
             "[Protagonist] smiles and hugs her. He's just glad she's safe. Earth is saved, and [Protagonist] did it without relying on [Eldest Brother]'s radical world unification plan.",
             "[Protagonist] and [Girl 1] get married and live happily ever after."
         ], "The end! Congratulations!", []);
+        adventureBook.constructChapter(18, "path18Run", ["[Alter Ego] flees as fast as he can. Unfortunately, not everyone can move as fast as he can. The spacetime rift crushes the arctic ice, and nearly all of the armies of the world perish together with the aliens. Needless to say, none of the ordinary humans survived. Even among the superhumans, there are very few survivors. Even [Flying Girl], [Light Villain], and [Animal Girl], who all had means to fly and could be considered faster than most superhumans, are missing.",
+            "Worse yet, [Eldest Brother] and [Girl 1] are among those confirmed dead.",
+            "[Protagonist] goes back to [Enormous City] in mourning. Meanwhile, the side effects of the spacetime rift cause persistent damage to the enviornment all over the globe, not just the arctic. Scientists speculate that the Earth will never be the same again. It's not certain if humanity will survive the fallout over the following centuries. Only time will tell."], "And thus, [Protagonist]'s story ends in tragedy. Thank you for reading. Better luck next time.", []);
+        adventureBook.constructChapter(18, "path18Reopen", ["[Alter Ego] sends a surge of electricity into the portal. He's no physicist, but clearly attacking the portal was riskier than he thought. [Sidekick] rushes to his aide and gives him guidance on how to repair the portal. Together, they manage to keep it from collapsing it until people who actually know what they are doing are able to stabilize it.",
+            "The aliens, once they see the portal is now stable, finally calm down. Until they remember that they had dropped their weapons in a panic, that is. The forces of Earth swiftly capture their invaders, all except [Invasion Leader], who is too powerful to be taken down, even without weapons. [Eldest Brother] and [Alter Ego] work together and force him back to the portal he came from.",
+            "The portal remains open. No one is sure how to close it safely, so it just stays there, as a permanant pathway between Earth and the alien world. But the enemy's main army has been captured with minimal casualties, and now Earth has gotten its hands on their weapons. The problem isn't completely solved, but its highly unlikely that Earth will be invaded anytime soon.",
+            "Meanwhile, [Alter Ego] gets the lecture of his life from nearly everyone who knows him. \"Didn't you learn anything in school?! Two thousand years ago, the first apocolype was caused when some idiot scientist who was messing around with spacetime and nearly blew up the planet! Why would you attack a spacetime portal with a lighting bolt?! At that point, we would have been better off surrendering!\" [Alter Ego], is stunned. He always had heard about the apoclypse, but because he ran away from home and dropped out of school, so he had no idea what had caused it.",
+            "Fortunately, the world is saved. [Protagonist] and [Girl 1] get married, and the Earth is mostly at peace. [Invasion Leader] is still out there, but now he's learned that the Earth can't be invaded as long as [Alter Ego] and [Eldest Brother] are around. Similarly, [Eldest Brother] and the [Surname] Syndicate cannot take over the world either as long as [Alter Ego] is around. The biggest crisises have been averted."], "The end. Thank you for reading.", []);
+        adventureBook.constructChapter(18, "path18Close", ["[Alter Ego] decides to go all or nothing. He blasts the portal with even more lightning. It still trembles dangerously, but slowly shrinks until it disappears.",
+            "Meanwhile, the aliens have dropped all of their weapons. Their superpowers seem to have weakened with the collapse of the portal too. Aparrently they can't use their powers as freely when they are farther from their homeworld. They are smoothly captured, and Earth is saved.",
+            "In the aftermath, [Alter Ego] notices that his own abilities seem to have dropped to nearly half. Maybe he pushed himself too hard? He tries to act natural; there is no need to let everyone know; it would be a huge blow to Earth's morale. None of the other earthling superhumans seem to be affected by this, but he can't tell whether they are tyring to hide it too, or if he's the only one. Either way, he's still probably one of the strongest superheroes. He's just not nearly as strong as he used to be.",
+            "[Eldest Brother] insists on continuing his world domination scheme, even though the alien invasion has been taken care of. He insists that they never know when more aliens might arrive. [Alter Ego] disagrees. As long as he is around, [Eldest Brother] will never be able to take over the world.",
+            "Finally, [Protagonist] returns to [Enormous City] and proposes to [Girl 1]. They live happily ever after for the rest of their lives."], "The end. Thank you for reading.", []);
     }
     return adventureBook;
 }
