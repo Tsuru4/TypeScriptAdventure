@@ -241,8 +241,14 @@ function constructBookSparky() {
     {
         const button16Portal = { label: "Close Portal", path: "path17Portal", iconSrc: iconAir };
         const button16Leader = { label: "Fight Leader", path: "path17Leader", iconSrc: iconFire };
+        const button17Fight = { label: "Fight Her", path: "path17FightGirl", iconSrc: iconFire };
+        const button18Apologize = { label: "Apologize", path: "path17Apologize", iconSrc: iconWater };
+        adventureBook.constructChapter(16, "path15Villain", ["[Protagonist] decides to join his brother in the [Surname] Syndicate, abandoning his role as the hero [Alter Ego]. Immediately, however, [Girl 1] confronts him. He tries to explain to her, but she doesn't see his reasoning as justified.",
+            "\"[Protagonist], don't do this! If you try to take over the world, then you will be no different than your father! It doesn't matter if you mean well, it just isn't right! People should be free! Even if you save the world this way, is this worth it?\"",
+            "\"There has to be another way! My parents once said that this world is always protected by a beautiful goddess of light and water! They say she saved the earth the last time there was a global catastrophe. We don't need to rely on ourselves for everything! It's more important to stick to doing the right thing!\"",
+            "Tearfully, she begs him to rethink his choice. \"Please, please don't do this. We are supposed to be heroes together. I don't want to have to fight you!\""], "What how will [Protagonist] deal with his sidekick and girlfriend?", [button17Fight, button18Apologize]);
         adventureBook.constructChapter(16, "path16Hero", ["[Protagonist] decides to go back home and train harder. Together with [Girl 1], they brainstorm a better way to save Earth.",
-            "[Girl 1] tells her Uncle [King], and [King] spreads the warning to his connections.",
+            "[Girl 1] tells her Uncle [King], and [King] spreads the warning through his connections.",
             "[Eldest Brother] is irrate, but [Boy 1] and [Animal Girl] respect [Protagonist]'s decision and convince [Eldest Brother] to let [Protagonist] go.",
             "[Protagonist] trains for fourteen years.",
             "[Protagonist] and [Girl 1] have become very powerful. [Alter Ego] is now considered by many to be the strongest superhero in the world. They make many superhuman allies, such as [Healing Hero]. They also cross paths with again with the team of girls calling themselves [Superhero Team]. It's a girls only team, so [Alter Ego] is not invited. [Sidekick] doesn't like them because their leader, [Earth Girl], is always flirting with [Alter Ego]. She gets furious whenever [Alter Ego] flirts back.",
@@ -259,6 +265,7 @@ function constructBookSparky() {
         const button17Reopen = { label: "Reopen Portal", path: "path18Reopen", iconSrc: iconFire };
         const button17Run = { label: "Run", path: "path18Run", iconSrc: iconEarth };
         const button17Close = { label: "Close Portal Again", path: "path18Close", iconSrc: iconAir };
+        const button17Doom = { label: "Reap What You Have Sown", path: "path18Doom", iconSrc: iconWater, clearConditions: ["path2Fire"], badPath: "path18Stripped" };
         adventureBook.constructChapter(17, "path17Leader", ["[Invasion Leader] laughs at humanity's feeble efforts to stop him. With a wave of his hand, a ball of fire appears, and the arctic starts to melt under everyone's feet. The steam is so thick, the entire sky gets covered in clouds, blocking what little starlight remained.",
             "But [Protagonist] does not give up. He tackles the invader head on with bolt after bolt of lightning!",
             "The battle rages for an unkkown amount of time. Eventually, the invader is exausted, and he retreats back through his portal."], "...", [button17Victory, button17Mercy]);
@@ -266,6 +273,14 @@ function constructBookSparky() {
             "Suddenly, a bolt of lightning bursts past his head. [Invasion Leader] glances at [Alter Ego] quizically. \"You missed, Earthling.\"",
             "But [Alter Ego] was never aiming at [Invasion Leader]; his lighting bolt hits the edge of the portal. Suddenly, there is a violent shaking, and the portal collapses! [Invasion Leader] pales. \"No, anything but that! Run!\" The fireball flickes and vanishes. All of the aliens tremble, drop their weapons, and run.",
             "But before the people of Earth can cheer, they notice something is off. The aliens are running towards them, trying desperately to get past the perimeter. After a moment, it becomes clear why; the air where the portal was is now pulsing ominously. Breaking the portal by force has created an unstable spacetime rift. Everyone, human and alien alike, begins to flee."], "What will [Alter Ego] do? (To be continued)", [button17Close, button17Reopen, button17Run]);
+        adventureBook.constructChapter(17, "path17FightGirl", ["[Protagonist] steels his heart and begins to fight. He doesn't want to hurt her, just knock her out so she can't get in his way. Her powersuit is vulnerable [Protagonist]'s lightning and magnetism, so there really isn't much of a contest. Without power in her suit, it becomes dead weight and she falls to the ground, unable to get up. He lets out a sigh, relieved that he defeated her without hurting her.",
+            "But he is wrong.",
+            "[Protagonist] feels a chill down his spine. He turns around and sees a woman, just as beautiful and captivating as [Girl 1], but she's glowing. Her face is blindfolded, but her anger is clear from her posture. Her voice is quiet, like the calm before the storm. \"Do you have any idea what you have done, boy?\"",
+            "[Protagonist] prepares another lightning bolt. The woman laughs coldly. \"Using lightning to attack ME? How ignorant!\""], "[Protagonist] seems to have made a terrible mistake. There is only one choice this time.", [button17Doom]);
+        adventureBook.constructChapter(17, "path17Apologize", ["[Protagonist] apologizes to [Girl 1]. They go back home together brainstorm a way to solve the probelm without using [Eldest Brother]'s plan.",
+            "[Girl 1] tells her Uncle [King], and [King] spreads the warning through his connections. Then, they tell all of their superhero asscociates.",
+            "[Eldest Brother] is furious at [Protagonist] for backing out, and launches an attack on [Enormous City]",
+            ""], "To be continued.", []);
     }
     //Volume 18
     {
@@ -296,6 +311,16 @@ function constructBookSparky() {
             "In the aftermath, [Alter Ego] notices that his own abilities seem to have dropped to nearly half. Maybe he pushed himself too hard? He tries to act natural; there is no need to let everyone know; it would be a huge blow to Earth's morale. None of the other earthling superhumans seem to be affected by this, but he can't tell whether they are tyring to hide it too, or if he's the only one. Either way, he's still probably one of the strongest superheroes. He's just not nearly as strong as he used to be.",
             "[Eldest Brother] insists on continuing his world domination scheme, even though the alien invasion has been taken care of. He insists that they never know when more aliens might arrive. [Alter Ego] disagrees. As long as he is around, [Eldest Brother] will never be able to take over the world.",
             "Finally, [Protagonist] returns to [Enormous City] and proposes to [Girl 1]. They live happily ever after for the rest of their lives."], "The end. Thank you for reading.", []);
+        adventureBook.constructChapter(18, "path18Doom", ["[Protagonist] launches a lightning bolt at the mysterious woman. She smirks at first, but her expression is suddenly contorted in pain when [Protagonist] launches a follow up attack; a move he hasn't relied on in years. She writhes uncomfortably and screams. \"This isn't lightning! What is this?!\"",
+            "Against a foe with a superior mastery of light, [Protagonist] has abandoned his usual lightning attacks and reverted back to the form of his orginal powers: Fire! It's more affective than he expected. The woman is immediately ablaze. He takes the chance to run.",
+            "But before he can get far, a heavry rain abruptly falls, extinguishing the flames.",
+            "\"Foolish child. You may have tricked me once, but I've touched hotter flames.\" Her ruined blindfold falls to the ground, revealing piercing red eyes. They are the last thing [Protagonist] ever sees. But the last thing he hears is [Girl 1] crying his name. His last thoughts are not of fear, but of guilt."], "How could you allow [Protagonist] to be so cruel to [Girl 1]?! Any monster who attacks his own girlfriend will face the wrath of an angry goddess.", []);
+        adventureBook.constructChapter(18, "path18Stripped", ["[Protagonist] launches a lightning bolt at the mysterious woman, but it has no affect whatsoever. She smirks. A staff materializes in her hand, and she strikes the ground with it. [Protagonist] feels off.",
+            "Suddenly, he realizes what happened. His powers have been drastically weakened!",
+            "The woman smiles coldly. \"You silly boy. You never considered where your powers came from, did you? Without me, you are nothing but a pathetic mortal. It's a shame that humanity must lose such a strong hero, but you did this to yourself.\"",
+            "She raises her staff to finish [Protagonist] off, but [Girl 1] leaps in the way. She managed to get out of her powersuit just in time. The woman stops at the last moment. \"This boy broke your heart, [Girl 1]. Do you really wish to stand up for him?\" She walks around [Girl 1] to strike [Protagonist] again, but [Girl 1] persists.",
+            "The woman scoffs and turns away. \"Whatever. I suppose sealing up your power was punishment enough for now. I have other people to save.\" She starts to walk off, but pauses again. \"Also, tell your brother that his silly world domination scheme is unnecessary. I already have everything under control.\" The woman is never seen again.",
+            "[Girl 1] drags [Protagonist] home. She knows that deep down, he wasn't trying to hurt her, but it will still take her a long time to fully forgive him. She is very relieved that he's still alive though. There are still a lot of problems in the world, but [Girl 1] refuses to allow [Protagonist] to get involved in superhero activities ever again."], "Thank you for reading. P.S. Next time, please let [Protagonist] be better to his girlfriend.", []);
     }
     return adventureBook;
 }

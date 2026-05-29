@@ -59,8 +59,10 @@ flowchart
     path14Loyalty --> path15Skip{Skip:Unfinished}
 
     path15Self --> path16Hero[Own Way]
-    path15Self --> path16Cooperate{Brother's way}
+    path15Self --> path16Villain[Brother's way]
 
+    path16Villain --> path17FightGirl[Fight]
+    path16Villain --> path17Apologize{Unfinished}
     path16Hero --> path17Portal[Portal]
     path16Hero --> path17Leader[Leader]
 
@@ -69,4 +71,6 @@ flowchart
     path17Portal --> path18Close((Good Ending 4))
     path17Leader --> path18Victory((Good Ending 1))
     path17Leader --> path18Mercy((Good Ending 2))
+    path17FightGirl --> path18Doom((Bad End))
+    path17FightGirl --> path18Stripped((Bad End))
 ```
