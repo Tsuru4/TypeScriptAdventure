@@ -444,7 +444,7 @@ function constructBookSparky():Book
         const button18Apologize:button = {label:"Apologize", path:"path17Apologize", iconSrc:iconWater};
 
         adventureBook.constructChapter(
-            16, "path15Villain",
+            16, "path16Villain",
             ["[Protagonist] decides to join his brother in the [Surname] Syndicate, abandoning his role as the hero [Alter Ego]. Immediately, however, [Girl 1] confronts him. He tries to explain to her, but she doesn't see his reasoning as justified.",
                 "\"[Protagonist], don't do this! If you try to take over the world, then you will be no different than your father! It doesn't matter if you mean well, it just isn't right! People should be free! Even if you save the world this way, is this worth it?\"",
                 "\"There has to be another way! My parents once said that this world is always protected by a beautiful goddess of light and water! They say she saved the earth the last time there was a global catastrophe. We don't need to rely on ourselves for everything! It's more important to stick to doing the right thing!\"",
