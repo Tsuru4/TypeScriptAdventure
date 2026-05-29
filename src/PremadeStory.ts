@@ -424,15 +424,16 @@ function constructBookSparky():Book
     }
     //Volume 15
     {
-        const button15Hero:button = {label:"Do It His Own Way",path:"path16Hero", iconSrc:iconSnowball};
-        
+        const button15Hero:button = {label:"Do It His Own Way",path:"path16Hero", iconSrc:iconAir};
+        const button15Villain:button = {label:"Do It Brother's Way", path:"path16Villain", iconSrc:iconEarth}
+
         adventureBook.constructChapter(
             15, "path15Self",
             ["He arrives as himself. At the meeting, he is greeted by several familiar faces, including [Eldest Brother], [Boy 1], and [Animal Girl].",
                 "[Eldest Brother] reveals that he took over the [Surname] Syndicate after they defeated their father. He says that he did this because he discovered that an alien invasion was coming to earth. There are only a few more years left until the aliens arrive.",
                 "In order to save Earth, [Eldest Brother] believes the best way is to conquer it, then unify it so they can stand together against the aliens. [Protagonist] isn't sure what to think of this plan."],
             "How will he respond to this news?",
-            [button15Hero]//Alternatively, he could join them.
+            [button15Hero,button15Villain]
         );
     }
     //Volume 16
